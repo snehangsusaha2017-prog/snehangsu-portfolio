@@ -141,4 +141,27 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // --- Homepage Interaction Transition ---
+  const isHomepage = document.querySelector('.home-bg-container') !== null;
+  if (isHomepage) {
+    const triggerActivity = () => {
+      document.body.classList.add('active-state');
+      document.documentElement.classList.add('active-state');
+      
+      // Clean up event listeners so they only trigger once
+      window.removeEventListener('mousemove', triggerActivity);
+      window.removeEventListener('click', triggerActivity);
+      window.removeEventListener('scroll', triggerActivity);
+      window.removeEventListener('keydown', triggerActivity);
+      window.removeEventListener('touchstart', triggerActivity);
+    };
+
+    // Add event listeners for various screen activities
+    window.addEventListener('mousemove', triggerActivity);
+    window.addEventListener('click', triggerActivity);
+    window.addEventListener('scroll', triggerActivity);
+    window.addEventListener('keydown', triggerActivity);
+    window.addEventListener('touchstart', triggerActivity);
+  }
 });

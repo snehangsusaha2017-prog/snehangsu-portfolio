@@ -88,6 +88,19 @@ body {
   border-bottom: 1px solid var(--border-color);
 }
 
+body.homepage-intro .navbar {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s, border-color 0.3s;
+}
+
+body.homepage-intro.active-state .navbar {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
 .nav-logo {
   font-size: 1.4rem;
   font-weight: 700;
@@ -161,13 +174,17 @@ body {
   background-image: url('assets/Snehangsu_home.jpg');
   background-size: cover;
   background-position: center;
-  filter: blur(15px) brightness(0.9);
+  filter: blur(0px) brightness(1);
   z-index: -1;
-  transition: filter 0.3s ease;
+  transition: filter 1.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-[data-theme="dark"] .home-bg-image {
-  filter: blur(15px) brightness(0.5) contrast(1.1);
+body.homepage-intro.active-state .home-bg-image {
+  filter: blur(15px) brightness(0.95);
+}
+
+[data-theme="dark"].homepage-intro.active-state .home-bg-image {
+  filter: blur(15px) brightness(0.4) contrast(1.1);
 }
 
 /* Homepage Welcome Card */
@@ -193,6 +210,19 @@ body {
   width: 100%;
   box-shadow: 0 15px 35px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.homepage-intro .welcome-card {
+  opacity: 0;
+  transform: translateY(40px);
+  pointer-events: none;
+  transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1), transform 1.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s, background-color 0.3s;
+}
+
+body.homepage-intro.active-state .welcome-card {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .welcome-card:hover {
@@ -651,3 +681,72 @@ body {
     font-size: 1.8rem;
   }
 }
+
+/* Google aesthetics colored header stripe */
+.google-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  display: flex;
+  z-index: 1001; /* Above navbar */
+}
+
+.bar-segment {
+  height: 100%;
+  flex: 1;
+}
+
+.bar-segment.blue { background-color: var(--google-blue, #1a73e8); }
+.bar-segment.red { background-color: var(--google-red, #ea4335); }
+.bar-segment.yellow { background-color: var(--google-yellow, #fbbc05); }
+.bar-segment.green { background-color: var(--google-green, #34a853); }
+
+body.homepage-intro .google-bar {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+body.homepage-intro.active-state .google-bar {
+  opacity: 1;
+}
+
+/* Activity Prompt (Fades out on activity) */
+.activity-prompt {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+/* Show prompt only on inactive homepage */
+body:not(.homepage-intro) .activity-prompt {
+  display: none;
+}
+
+body.active-state .activity-prompt {
+  opacity: 0;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
