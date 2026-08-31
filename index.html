@@ -4,93 +4,99 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Snehangsu | Portfolio</title>
-  <!-- Google Fonts: Outfit (modern sans-serif) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Link Stylesheet -->
+  <!-- Bebas Neue for bold editorial headlines, Outfit for body, Space Mono for accents -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <!-- FontAwesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="homepage-intro">
+<body class="homepage homepage-intro">
 
-  <!-- Blurred Background Image Container (16:9 aspect ratio scaling) -->
-  <div class="home-bg-container">
-    <div class="home-bg-image"></div>
+  <!-- Full-Bleed Background Photo -->
+  <div class="hero-bg">
+    <div class="hero-bg-image"></div>
+    <!-- Gradient overlay: darkens bottom-left where text lives -->
+    <div class="hero-overlay"></div>
   </div>
 
-  <!-- Google aesthetics colored header stripe -->
-  <div class="google-bar">
-    <div class="bar-segment blue"></div>
-    <div class="bar-segment red"></div>
-    <div class="bar-segment yellow"></div>
-    <div class="bar-segment green"></div>
-  </div>
-
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <a href="index.html" class="nav-logo">
-      <i class="fa-solid fa-compass"></i> Snehangsu
-    </a>
-    <div class="nav-links">
-      <a href="journey.html" class="nav-item">My Journey</a>
-      <a href="explore.html" class="nav-item">Explore with Snehangsu</a>
-      <button class="theme-toggle-btn" aria-label="Toggle Theme">
-        <i class="fa-regular fa-moon"></i>
-      </button>
-    </div>
+  <!-- Top Nav: name left, links right -->
+  <nav class="site-nav" id="siteNav">
+    <a href="index.html" class="site-name">SNEHANGSU</a>
+    <ul class="site-nav-links">
+      <li><a href="index.html" class="snl active">HOME</a></li>
+      <li><a href="journey.html" class="snl">MY JOURNEY</a></li>
+      <li><a href="explore.html" class="snl">EXPLORE</a></li>
+      <li>
+        <button class="theme-toggle-btn" aria-label="Toggle theme">
+          <i class="fa-regular fa-moon"></i>
+        </button>
+      </li>
+    </ul>
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
   </nav>
 
-  <!-- Central Welcome Card -->
-  <main class="home-container">
-    <div class="welcome-card">
-      <span class="hello-text">Hello</span>
-      <h1 class="heading-main">Meet Snehangsu</h1>
-      <p class="subtitle-main">Developer, Designer &amp; Computational Economist</p>
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <button class="mobile-close-btn" id="mobileCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+    <ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="journey.html">MY JOURNEY</a></li>
+      <li><a href="explore.html">EXPLORE</a></li>
+    </ul>
+  </div>
 
-      <div class="home-ctas">
-        <a href="journey.html" class="cta-btn primary">
-          Explore My Journey <i class="fa-solid fa-arrow-right"></i>
-        </a>
-        <a href="explore.html" class="cta-btn secondary">
-          My Projects <i class="fa-solid fa-code"></i>
-        </a>
+  <!-- Hero Text Block — overlaid directly on photo (hidden until interaction) -->
+  <main class="hero-content" id="heroContent">
+
+    <!-- The big editorial headline -->
+    <div class="hero-text-block">
+      <p class="hero-hello"><em>Hello.</em></p>
+      <h1 class="hero-headline">
+        <span class="hl-line hl-white">MEET</span>
+        <span class="hl-line hl-accent">&amp;</span>
+        <span class="hl-line hl-white">SNEHANGSU</span>
+      </h1>
+      <p class="hero-tagline">DEVELOPER · ECONOMIST · CREATOR</p>
+
+      <!-- CTA Row -->
+      <div class="hero-cta-row">
+        <a href="journey.html" class="hero-btn hero-btn-solid">MY JOURNEY</a>
+        <a href="explore.html" class="hero-btn hero-btn-outline">EXPLORE WORK</a>
       </div>
 
-      <!-- Social & Contact Section -->
-      <div class="social-section">
-        <h2 class="social-title">Connect with me</h2>
-        <div class="social-buttons">
-          <a href="https://github.com" target="_blank" class="social-item github" aria-label="GitHub">
-            <i class="fa-brands fa-github"></i>
-          </a>
-          <a href="https://linkedin.com" target="_blank" class="social-item linkedin" aria-label="LinkedIn">
-            <i class="fa-brands fa-linkedin-in"></i>
-          </a>
-          <a href="#" class="social-item contact-me contact-me-trigger" aria-label="Contact Me">
-            <i class="fa-regular fa-envelope"></i>
-          </a>
-        </div>
+      <!-- Social row -->
+      <div class="hero-social-row">
+        <a href="https://github.com/snehangsusaha2017-prog" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" class="contact-me-trigger" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
       </div>
     </div>
+
+    <!-- Scroll hint -->
+    <div class="scroll-hint">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+
   </main>
 
-  <!-- Activity Prompt (Fades out on activity) -->
-  <div class="activity-prompt">
-    <span>Move mouse or tap screen</span>
-    <i class="fa-solid fa-chevron-down animate-bounce"></i>
+  <!-- Activity Prompt (shown when image is full & clean) -->
+  <div class="activity-prompt" id="activityPrompt">
+    <span class="ap-text">Move to reveal</span>
+    <i class="fa-solid fa-computer-mouse animate-pulse"></i>
   </div>
 
   <!-- Contact Modal -->
   <div class="modal" id="contactModal">
     <div class="modal-card">
-      <button class="modal-close-btn" aria-label="Close modal">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <h3 class="modal-title">Get in Touch</h3>
-      <p class="modal-desc">I'd love to connect! Reach out through any of the channels below.</p>
-      
+      <button class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+      <p class="modal-eyebrow">GET IN TOUCH</p>
+      <h3 class="modal-title">Let's Connect</h3>
+      <p class="modal-desc">Open to conversations, collaborations, and curiosity.</p>
       <div class="contact-options">
         <a href="mailto:your-email@example.com" class="contact-row">
           <i class="fa-regular fa-envelope"></i>
@@ -98,11 +104,11 @@
         </a>
         <a href="https://linkedin.com" target="_blank" class="contact-row">
           <i class="fa-brands fa-linkedin-in"></i>
-          <span>LinkedIn /snehangsusaha</span>
+          <span>linkedin.com/in/snehangsusaha</span>
         </a>
-        <a href="https://github.com" target="_blank" class="contact-row">
+        <a href="https://github.com/snehangsusaha2017-prog" target="_blank" class="contact-row">
           <i class="fa-brands fa-github"></i>
-          <span>GitHub /snehangsusaha</span>
+          <span>github.com/snehangsusaha2017-prog</span>
         </a>
       </div>
     </div>

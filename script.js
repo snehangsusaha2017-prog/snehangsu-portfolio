@@ -1,59 +1,62 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Theme Toggle Logic ---
-  const themeToggleButtons = document.querySelectorAll('.theme-toggle-btn');
-  const storedTheme = localStorage.getItem('portfolio-theme');
-  
-  // Determine initial theme: stored preference -> system settings -> light
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initialTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
-  
-  // Set initial theme
-  document.documentElement.setAttribute('data-theme', initialTheme);
-  updateThemeIcons(initialTheme);
 
-  // Toggle theme click events
-  themeToggleButtons.forEach(btn => {
+  // ── THEME ───────────────────────────────────────────────────
+  const toggleBtns = document.querySelectorAll('.theme-toggle-btn');
+  const stored = localStorage.getItem('sn-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = stored || (prefersDark ? 'dark' : 'light');
+  applyTheme(theme);
+
+  toggleBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('portfolio-theme', newTheme);
-      updateThemeIcons(newTheme);
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem('sn-theme', next);
     });
   });
 
-  function updateThemeIcons(theme) {
-    themeToggleButtons.forEach(btn => {
+  function applyTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    toggleBtns.forEach(btn => {
       const icon = btn.querySelector('i');
-      if (icon) {
-        if (theme === 'dark') {
-          icon.className = 'fa-regular fa-sun'; // Sun icon to switch to light mode
-        } else {
-          icon.className = 'fa-regular fa-moon'; // Moon icon to switch to dark mode
-        }
-      }
+      if (icon) icon.className = t === 'dark' ? 'fa-regular fa-sun' : 'fa-regular fa-moon';
     });
   }
 
-  // --- ScrollSpy Logic for Right-Side List View ---
-  const sections = document.querySelectorAll('.module-section');
-  const navItems = document.querySelectorAll('.sidebar-item');
-
-  if (sections.length > 0 && navItems.length > 0) {
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -60% 0px', // Trigger when section occupies the active middle portion of viewport
-      threshold: 0
+  // ── HOMEPAGE ACTIVITY REVEAL ─────────────────────────────────
+  const isHome = document.body.classList.contains('homepage');
+  if (isHome) {
+    const events = ['mousemove', 'click', 'scroll', 'keydown', 'touchstart'];
+    const activate = () => {
+      document.body.classList.add('active-state');
+      events.forEach(e => window.removeEventListener(e, activate));
     };
+    events.forEach(e => window.addEventListener(e, activate));
+  }
 
-    const observer = new IntersectionObserver((entries) => {
+  // ── MOBILE MENU ──────────────────────────────────────────────
+  const mobileMenuBtn  = document.getElementById('mobileMenuBtn');
+  const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+  const mobileDrawer   = document.getElementById('mobileNavDrawer');
+
+  if (mobileMenuBtn && mobileDrawer) {
+    mobileMenuBtn.addEventListener('click', () => mobileDrawer.classList.add('open'));
+    mobileCloseBtn.addEventListener('click', () => mobileDrawer.classList.remove('open'));
+  }
+
+  // ── SCROLLSPY (sidebar nav for subpages) ─────────────────────
+  const sections  = document.querySelectorAll('.module-section');
+  const sideItems = document.querySelectorAll('.sidebar-item');
+
+  if (sections.length && sideItems.length) {
+    const spy = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          navItems.forEach(item => {
-            const link = item.querySelector('a');
-            if (link && link.getAttribute('href') === `#${id}`) {
+          const id = entry.target.id;
+          sideItems.forEach(item => {
+            const a = item.querySelector('a');
+            if (a && a.getAttribute('href') === `#${id}`) {
               item.classList.add('active');
             } else {
               item.classList.remove('active');
@@ -61,107 +64,52 @@ document.addEventListener('DOMContentLoaded', () => {
           });
         }
       });
-    }, observerOptions);
+    }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
 
-    sections.forEach(section => {
-      observer.observe(section);
-    });
+    sections.forEach(s => spy.observe(s));
   }
 
-  // --- Mobile Sidebar Drawer ---
-  const floatingTocBtn = document.querySelector('.floating-toc-btn');
-  const sidebarNav = document.querySelector('.sidebar-nav');
-  
-  if (floatingTocBtn && sidebarNav) {
-    floatingTocBtn.addEventListener('click', (e) => {
+  // ── FLOATING TOC BUTTON (mobile) ─────────────────────────────
+  const floatBtn  = document.querySelector('.floating-toc-btn');
+  const sidebarEl = document.querySelector('.sidebar-nav');
+
+  if (floatBtn && sidebarEl) {
+    floatBtn.addEventListener('click', e => {
       e.stopPropagation();
-      sidebarNav.classList.toggle('open');
-      const icon = floatingTocBtn.querySelector('i');
-      if (icon) {
-        if (sidebarNav.classList.contains('open')) {
-          icon.className = 'fa-solid fa-xmark';
-        } else {
-          icon.className = 'fa-solid fa-list-ul';
-        }
-      }
+      sidebarEl.classList.toggle('open');
+      const icon = floatBtn.querySelector('i');
+      if (icon) icon.className = sidebarEl.classList.contains('open') ? 'fa-solid fa-xmark' : 'fa-solid fa-list-ul';
     });
 
-    // Close mobile sidebar when clicking on a sidebar navigation link
-    const sidebarLinks = sidebarNav.querySelectorAll('.sidebar-item a');
-    sidebarLinks.forEach(link => {
+    // Close when clicking a link
+    sidebarEl.querySelectorAll('.sidebar-item a').forEach(link => {
       link.addEventListener('click', () => {
-        sidebarNav.classList.remove('open');
-        const icon = floatingTocBtn.querySelector('i');
+        sidebarEl.classList.remove('open');
+        const icon = floatBtn.querySelector('i');
         if (icon) icon.className = 'fa-solid fa-list-ul';
       });
     });
 
-    // Close mobile sidebar when clicking anywhere outside of it
-    document.addEventListener('click', (e) => {
-      if (sidebarNav.classList.contains('open') && !sidebarNav.contains(e.target) && e.target !== floatingTocBtn && !floatingTocBtn.contains(e.target)) {
-        sidebarNav.classList.remove('open');
-        const icon = floatingTocBtn.querySelector('i');
+    // Close when clicking outside
+    document.addEventListener('click', e => {
+      if (sidebarEl.classList.contains('open') && !sidebarEl.contains(e.target) && e.target !== floatBtn) {
+        sidebarEl.classList.remove('open');
+        const icon = floatBtn.querySelector('i');
         if (icon) icon.className = 'fa-solid fa-list-ul';
       }
     });
   }
 
-  // --- Contact Me Modal Logic ---
-  const contactTriggers = document.querySelectorAll('.contact-me-trigger');
-  const contactModal = document.getElementById('contactModal');
-  const modalCloseBtn = document.querySelector('.modal-close-btn');
+  // ── CONTACT MODAL ────────────────────────────────────────────
+  const triggers   = document.querySelectorAll('.contact-me-trigger');
+  const modal      = document.getElementById('contactModal');
+  const closeModal = document.querySelector('.modal-close-btn');
 
-  if (contactModal) {
-    // Open Modal
-    contactTriggers.forEach(trigger => {
-      trigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        contactModal.classList.add('open');
-      });
-    });
-
-    // Close Modal via close button
-    if (modalCloseBtn) {
-      modalCloseBtn.addEventListener('click', () => {
-        contactModal.classList.remove('open');
-      });
-    }
-
-    // Close Modal via clicking on the background overlay
-    contactModal.addEventListener('click', (e) => {
-      if (e.target === contactModal) {
-        contactModal.classList.remove('open');
-      }
-    });
-
-    // Close Modal via Esc key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && contactModal.classList.contains('open')) {
-        contactModal.classList.remove('open');
-      }
-    });
+  if (modal) {
+    triggers.forEach(t => t.addEventListener('click', e => { e.preventDefault(); modal.classList.add('open'); }));
+    closeModal?.addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('open'); });
   }
 
-  // --- Homepage Interaction Transition ---
-  const isHomepage = document.querySelector('.home-bg-container') !== null;
-  if (isHomepage) {
-    const triggerActivity = () => {
-      document.body.classList.add('active-state');
-      document.documentElement.classList.add('active-state');
-      
-      // Clean up event listeners so they only trigger once
-      window.removeEventListener('mousemove', triggerActivity);
-      window.removeEventListener('click', triggerActivity);
-      window.removeEventListener('scroll', triggerActivity);
-      window.removeEventListener('keydown', triggerActivity);
-      window.removeEventListener('touchstart', triggerActivity);
-    };
-
-    // Add event listeners for various screen activities
-    window.addEventListener('mousemove', triggerActivity);
-    window.addEventListener('click', triggerActivity);
-    window.addEventListener('scroll', triggerActivity);
-    window.addEventListener('keydown', triggerActivity);
-    window.addEventListener('touchstart', triggerActivity);
-  }
 });
