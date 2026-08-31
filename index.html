@@ -4,25 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Snehangsu | Portfolio</title>
-  <!-- Google Fonts: Outfit (modern, clean, geometric sans-serif similar to Google Sans) -->
+  <!-- Google Fonts: Outfit (modern sans-serif) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <!-- Link CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Link Stylesheet -->
   <link rel="stylesheet" href="styles.css">
-  <!-- FontAwesome for icons (e.g., GitHub, Email, etc.) -->
+  <!-- FontAwesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- Background Slideshow -->
-  <div class="bg-container">
-    <div class="bg-image active" style="background-image: url('assets/image1.jpg');"></div>
-    <div class="bg-image" style="background-image: url('assets/image2.jpg');"></div>
-    <div class="bg-image" style="background-image: url('assets/image3.jpg');"></div>
+  <!-- Blurred Background Image Container (16:9 aspect ratio scaling) -->
+  <div class="home-bg-container">
+    <div class="home-bg-image"></div>
   </div>
 
-  <!-- Google Aesthetics Accent Bar -->
+  <!-- Google aesthetics colored header stripe -->
   <div class="google-bar">
     <div class="bar-segment blue"></div>
     <div class="bar-segment red"></div>
@@ -30,39 +28,79 @@
     <div class="bar-segment green"></div>
   </div>
 
-  <!-- Main Content Wrapper -->
-  <main class="main-content">
-    <div class="hero-card">
-      <div class="profile-avatar">
-        <i class="fa-regular fa-user"></i>
-      </div>
-      <h1 class="heading">Meet Snehangsu</h1>
-      <p class="subtitle">Developer &amp; Creator</p>
-      
-      <p class="description">
-        Welcome to my personal space. I build clean, modern web experiences with high attention to detail. Currently crafting code, designing UI/UX, and turning ideas into functional software.
-      </p>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">
+      <i class="fa-solid fa-compass"></i> Snehangsu
+    </a>
+    <div class="nav-links">
+      <a href="journey.html" class="nav-item">My Journey</a>
+      <a href="explore.html" class="nav-item">Explore with Snehangsu</a>
+      <button class="theme-toggle-btn" aria-label="Toggle Theme">
+        <i class="fa-regular fa-moon"></i>
+      </button>
+    </div>
+  </nav>
 
-      <!-- Social Links -->
-      <div class="social-links">
-        <a href="https://github.com" target="_blank" aria-label="GitHub" class="social-btn github">
-          <i class="fa-brands fa-github"></i>
+  <!-- Central Welcome Card -->
+  <main class="home-container">
+    <div class="welcome-card">
+      <span class="hello-text">Hello</span>
+      <h1 class="heading-main">Meet Snehangsu</h1>
+      <p class="subtitle-main">Developer, Designer &amp; Computational Economist</p>
+
+      <div class="home-ctas">
+        <a href="journey.html" class="cta-btn primary">
+          Explore My Journey <i class="fa-solid fa-arrow-right"></i>
         </a>
-        <a href="mailto:your-email@example.com" aria-label="Email" class="social-btn email">
-          <i class="fa-regular fa-envelope"></i>
-        </a>
-        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="social-btn linkedin">
-          <i class="fa-brands fa-linkedin-in"></i>
+        <a href="explore.html" class="cta-btn secondary">
+          My Projects <i class="fa-solid fa-code"></i>
         </a>
       </div>
 
-      <!-- Footer-like indicator inside card -->
-      <div class="status-indicator">
-        <span class="status-dot"></span>
-        <span>Available for new projects</span>
+      <!-- Social & Contact Section -->
+      <div class="social-section">
+        <h2 class="social-title">Connect with me</h2>
+        <div class="social-buttons">
+          <a href="https://github.com" target="_blank" class="social-item github" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://linkedin.com" target="_blank" class="social-item linkedin" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="social-item contact-me contact-me-trigger" aria-label="Contact Me">
+            <i class="fa-regular fa-envelope"></i>
+          </a>
+        </div>
       </div>
     </div>
   </main>
+
+  <!-- Contact Modal -->
+  <div class="modal" id="contactModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <h3 class="modal-title">Get in Touch</h3>
+      <p class="modal-desc">I'd love to connect! Reach out through any of the channels below.</p>
+      
+      <div class="contact-options">
+        <a href="mailto:your-email@example.com" class="contact-row">
+          <i class="fa-regular fa-envelope"></i>
+          <span>your-email@example.com</span>
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="contact-row">
+          <i class="fa-brands fa-linkedin-in"></i>
+          <span>LinkedIn /snehangsusaha</span>
+        </a>
+        <a href="https://github.com" target="_blank" class="contact-row">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub /snehangsusaha</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

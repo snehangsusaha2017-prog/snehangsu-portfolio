@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snehangsu | Explore</title>
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Link Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Google aesthetics colored header stripe -->
+  <div class="google-bar">
+    <div class="bar-segment blue"></div>
+    <div class="bar-segment red"></div>
+    <div class="bar-segment yellow"></div>
+    <div class="bar-segment green"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">
+      <i class="fa-solid fa-compass"></i> Snehangsu
+    </a>
+    <div class="nav-links">
+      <a href="journey.html" class="nav-item">My Journey</a>
+      <a href="explore.html" class="nav-item active">Explore with Snehangsu</a>
+      <button class="theme-toggle-btn" aria-label="Toggle Theme">
+        <i class="fa-regular fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Subpage Main Content Layout -->
+  <div class="subpage-container">
+    
+    <!-- Left Column: Scrollable Sections -->
+    <main class="content-area">
+      
+      <!-- Back Button -->
+      <div class="back-btn-container">
+        <a href="index.html" class="back-btn">
+          <i class="fa-solid fa-arrow-left-long"></i> Back to Home
+        </a>
+      </div>
+
+      <!-- Section 1: Internship -->
+      <section id="internship" class="module-section">
+        <h2>Internships</h2>
+        <div class="module-content">
+          <p>Highlighting professional experiences where theory met real-world application:</p>
+          <ul class="bullet-list">
+            <li>
+              <strong>Bajaj Finserv:</strong> Worked on retail credit systems, examining process improvements, digital lending frameworks, and quantitative methods for underwriting optimizations.
+            </li>
+            <li>
+              <strong>Reserve Bank of India (RBI):</strong> Conducted policy research, studying banking system parameters, economic indicators, and monetary transmission models. Developed a deep understanding of central banking frameworks.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 2: Credit Risk Modelling -->
+      <section id="credit-risk-modelling" class="module-section">
+        <h2>Credit Risk Modelling – Deployed Model</h2>
+        <div class="module-content">
+          <p>Created and deployed an end-to-end Machine Learning model to evaluate probability of default (PD) for loan applicants.</p>
+          <ul class="bullet-list">
+            <li><strong>Methodology:</strong> Logistic Regression, XGBoost classification, and WoE (Weight of Evidence) binning.</li>
+            <li><strong>Deployment:</strong> Served the model via a Python-based REST API (using FastAPI/Streamlit) to provide real-world credit risk assessment scoring.</li>
+          </ul>
+          <div class="highlight-box">
+            <strong>Key Outcome:</strong> Integrated credit scoring metrics into a clean front-end, reducing test assessment time by 40% while preserving strict regulatory standards.
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Block Chain Simulation -->
+      <section id="blockchain-simulation" class="module-section">
+        <h2>Block Chain Simulation</h2>
+        <div class="module-content">
+          <p>Developed a functional local blockchain network simulation to demonstrate ledger immutability, mining mechanisms, and smart contract execution.</p>
+          <ul class="bullet-list">
+            <li><strong>Features:</strong> SHA-256 block hashing, proof-of-work (PoW) consensus algorithm, mock peer network synchronization, and visual transaction logs.</li>
+            <li><strong>Language:</strong> Built in pure Node.js/Python to emphasize structural mechanics rather than framework dependencies.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 4: Retail Analytics Dashboard -->
+      <section id="retail-analytics-dashboard" class="module-section">
+        <h2>Retail Analytics Dashboard</h2>
+        <div class="module-content">
+          <p>An interactive BI dashboard visualizing customer buying behavior, supply chain health, and sales forecasting.</p>
+          <ul class="bullet-list">
+            <li><strong>Stack:</strong> SQL, Python (Pandas/Plotly), and PowerBI/Tableau.</li>
+            <li><strong>Insights:</strong> Highlighted cross-selling opportunities (market basket analysis) and isolated inventory bottlenecks, improving inventory turnover projection models.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 5: Learn with me -->
+      <section id="learn-with-me" class="module-section">
+        <h2>Learn with me</h2>
+        <div class="module-content">
+          <p>A compilation of tutorials, documentation, and conceptual notes on my study topics:</p>
+          <ul class="bullet-list">
+            <li>
+              <strong>N8N Automations:</strong> How I build no-code and low-code workflows to connect APIs, sync databases, and automate redundant engineering tasks smoothly.
+            </li>
+            <li>
+              <strong>Learn Fintech – Adyen:</strong> A deep dive into payment processing architecture, card networks, and global payment gateways, mapping out how Adyen processes transaction logic.
+            </li>
+            <li>
+              <strong>A Lending App Journey:</strong> Comprehensive blueprints, database schemas, and architectural outlines detailing how to construct a micro-lending app from scratch.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 6: RAWE -->
+      <section id="rawe" class="module-section">
+        <h2>RAWE – Learning by doing</h2>
+        <div class="module-content">
+          <p><strong>Rural Agricultural Work Experience (RAWE):</strong> A unique hands-on program working alongside rural communities. It taught me how to apply scientific models under real-world resource constraints, evaluate local economy flows, and manage operations in unstructured environments.</p>
+        </div>
+      </section>
+
+      <!-- Section 7: PG Thesis -->
+      <section id="pg-thesis" class="module-section">
+        <h2>PG Thesis – Insect Genomics &amp; Beyond</h2>
+        <div class="module-content">
+          <p>My Post-Graduate research focusing on genomics, bioinformatics pipeline analysis, and computational biology.</p>
+          <ul class="bullet-list">
+            <li><strong>Focus:</strong> Sequenced genomes, analyzed phylogenetic trees, and used predictive models to study adaptive genetic variants.</li>
+            <li><strong>Tech:</strong> Biopython, R (Bioconductor), BLAST alignments, and cloud computing environments.</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Right Column: Sticky List View (Table of Contents) -->
+    <aside class="sidebar-nav">
+      <h3 class="sidebar-title">Explore Projects</h3>
+      <ul class="sidebar-list">
+        <li class="sidebar-item active"><a href="#internship">Internships</a></li>
+        <li class="sidebar-item"><a href="#credit-risk-modelling">Credit Risk Modelling</a></li>
+        <li class="sidebar-item"><a href="#blockchain-simulation">Blockchain Simulation</a></li>
+        <li class="sidebar-item"><a href="#retail-analytics-dashboard">Retail Analytics Dashboard</a></li>
+        <li class="sidebar-item"><a href="#learn-with-me">Learn with Me</a></li>
+        <li class="sidebar-item"><a href="#rawe">RAWE</a></li>
+        <li class="sidebar-item"><a href="#pg-thesis">PG Thesis</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Floating Mobile List View Toggle Button -->
+  <button class="floating-toc-btn" aria-label="Toggle Navigation Index">
+    <i class="fa-solid fa-list-ul"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
