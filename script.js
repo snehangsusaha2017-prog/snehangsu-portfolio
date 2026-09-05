@@ -24,16 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── HOMEPAGE ACTIVITY REVEAL ─────────────────────────────────
-  const isHome = document.body.classList.contains('homepage');
-  if (isHome) {
-    const events = ['mousemove', 'click', 'scroll', 'keydown', 'touchstart'];
-    const activate = () => {
-      document.body.classList.add('active-state');
-      events.forEach(e => window.removeEventListener(e, activate));
-    };
-    events.forEach(e => window.addEventListener(e, activate));
-  }
+
 
   // ── MOBILE MENU ──────────────────────────────────────────────
   const mobileMenuBtn  = document.getElementById('mobileMenuBtn');
@@ -110,6 +101,23 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModal?.addEventListener('click', () => modal.classList.remove('open'));
     modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('open'); });
+  }
+
+  // ── ROBOT HOTSPOT WIDGET (HOMEPAGE) ──────────────────────────
+  const robotWidget    = document.getElementById('robotWidget');
+  const robotCloseBtn  = document.getElementById('robotCloseBtn');
+  const robotReopenBtn = document.getElementById('robotReopenBtn');
+
+  if (robotWidget && robotCloseBtn && robotReopenBtn) {
+    robotCloseBtn.addEventListener('click', () => {
+      robotWidget.classList.add('minimized');
+      robotReopenBtn.classList.add('visible');
+    });
+
+    robotReopenBtn.addEventListener('click', () => {
+      robotWidget.classList.remove('minimized');
+      robotReopenBtn.classList.remove('visible');
+    });
   }
 
 });

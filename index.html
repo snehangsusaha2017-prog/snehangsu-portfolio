@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="homepage homepage-intro">
+<body class="homepage">
 
   <!-- Full-Bleed Background Photo -->
   <div class="hero-bg">
@@ -54,13 +54,12 @@
 
     <!-- The big editorial headline -->
     <div class="hero-text-block">
-      <p class="hero-hello"><em>Hello.</em></p>
+      <p class="hero-hello"><em>Hiiii,</em></p>
       <h1 class="hero-headline">
         <span class="hl-line hl-white">MEET</span>
-        <span class="hl-line hl-accent">&amp;</span>
         <span class="hl-line hl-white">SNEHANGSU</span>
       </h1>
-      <p class="hero-tagline">DEVELOPER · ECONOMIST · CREATOR</p>
+      <p class="hero-tagline">BUSINESS ANALYST · AI VALUE CREATOR · AGRICULTURIST</p>
 
       <!-- CTA Row -->
       <div class="hero-cta-row">
@@ -84,11 +83,73 @@
 
   </main>
 
-  <!-- Activity Prompt (shown when image is full & clean) -->
-  <div class="activity-prompt" id="activityPrompt">
-    <span class="ap-text">Move to reveal</span>
-    <i class="fa-solid fa-computer-mouse animate-pulse"></i>
-  </div>
+  <!-- Robot Assistant & Hotspot Dial Widget -->
+  <aside class="robot-hotspot-widget" id="robotWidget" aria-label="Interactive Hotspots Assistant">
+    
+    <!-- Top Robot Speech & Avatar Header -->
+    <div class="robot-header">
+      <div class="robot-avatar-box">
+        <div class="robot-antenna"></div>
+        <div class="robot-face">
+          <span class="robot-eye left"></span>
+          <span class="robot-eye right"></span>
+        </div>
+        <div class="robot-glow-ring"></div>
+      </div>
+      <div class="robot-speech-bubble">
+        <div class="bubble-arrow"></div>
+        <p class="bubble-greeting">Hii! <span class="wave-hand">👋</span></p>
+        <p class="bubble-text">See the hotspots</p>
+      </div>
+      <button class="robot-close-btn" id="robotCloseBtn" aria-label="Minimize hotspots dial">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Circular Dial Hotspots Hub -->
+    <div class="circular-dial-wrapper">
+      <div class="dial-radar-ring"></div>
+      <div class="dial-orbital-ring"></div>
+      
+      <!-- Central Core Beacon -->
+      <div class="dial-core">
+        <i class="fa-solid fa-bolt-lightning"></i>
+        <span>HOTSPOTS</span>
+      </div>
+
+      <!-- Hotspot 1: Internship -->
+      <a href="explore.html#internship" class="hotspot-node node-top" title="Explore Internships">
+        <div class="node-icon-wrap">
+          <i class="fa-solid fa-briefcase"></i>
+          <span class="node-live-dot"></span>
+        </div>
+        <div class="node-tooltip">
+          <span class="node-title">INTERNSHIPS</span>
+          <span class="node-desc">Bajaj Finserv &amp; RBI</span>
+        </div>
+      </a>
+
+      <!-- Hotspot 2: Blockchain -->
+      <a href="https://snehangsusaha2017-prog.github.io/blockchain-portal/" target="_blank" rel="noopener noreferrer" class="hotspot-node node-bottom" title="Launch Blockchain Simulation">
+        <div class="node-icon-wrap blockchain-pulse">
+          <i class="fa-solid fa-cube"></i>
+          <span class="node-live-dot"></span>
+        </div>
+        <div class="node-tooltip">
+          <span class="node-title">BLOCKCHAIN ↗</span>
+          <span class="node-desc">ChainEd Live Simulation</span>
+        </div>
+      </a>
+    </div>
+
+  </aside>
+
+  <!-- Floating Reopen Pill (Shown when widget is minimized) -->
+  <button class="robot-reopen-pill" id="robotReopenBtn" aria-label="Open hotspots">
+    <div class="mini-bot-icon"><i class="fa-solid fa-robot"></i></div>
+    <span>HOTSPOTS</span>
+    <span class="pill-dot"></span>
+  </button>
 
   <!-- Contact Modal -->
   <div class="modal" id="contactModal">
