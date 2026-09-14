@@ -10,7 +10,10 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="subpage">
+<body class="subpage journey-page">
+
+  <!-- Dynamic Shifting Ambient Background Overlay -->
+  <div class="dynamic-bg-overlay" id="dynamicBgOverlay"></div>
 
   <!-- Nav -->
   <nav class="site-nav">
@@ -47,114 +50,220 @@
   <!-- Two-column layout -->
   <div class="subpage-wrapper">
 
-    <!-- Content -->
-    <main>
-      <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>&nbsp; BACK TO HOME</a>
+    <!-- Main Content Area -->
+    <main class="explore-main">
 
-      <!-- 1 · Who Am I -->
-      <section id="who-am-i" class="module-section">
-        <span class="section-num">01</span>
-        <p class="module-eyebrow">IDENTITY</p>
-        <h2>Who am I?</h2>
-        <div class="module-content">
-          <p><strong>About Me:</strong> A developer, designer, and student of systems who loves bridging technical depth with strategic thinking and product intuition.</p>
-          <p><strong>What Drives Me:</strong> Deep curiosity about how complex systems work — whether distributed software, economic markets, or corporate environments. I want to build tools that solve genuine inefficiencies.</p>
-          <div class="highlight-quote">"Learn continuously, build deliberately, and leave things better than you found them."</div>
-        </div>
-        <div class="tag-row">
-          <span class="tag">Developer</span>
-          <span class="tag">Economist</span>
-          <span class="tag">Designer</span>
-        </div>
-      </section>
+      <!-- Top Action Bar -->
+      <div class="explore-action-bar">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>&nbsp; BACK TO HOME</a>
+        
+        <!-- See All Modules Toggle Button -->
+        <button class="view-toggle-btn" id="journeyViewToggleBtn">
+          <i class="fa-solid fa-list-ul"></i>
+          <span id="journeyViewToggleText">SEE ALL MODULES</span>
+        </button>
+      </div>
 
-      <!-- 2 · What I Did -->
-      <section id="what-i-did" class="module-section">
-        <span class="section-num">02</span>
-        <p class="module-eyebrow">EXPERIENCE</p>
-        <h2>What I did?</h2>
-        <div class="module-content">
-          <p><strong>Education:</strong> Pursuing a rigorous academic path combining software engineering, data sciences, and business analytics.</p>
-          <ul class="bullet-list">
-            <li><strong>Mistakes &amp; Learnings:</strong> Every failed deployment and missed projection is a stepping stone. True growth comes from reviewing, debugging, and documenting your mistakes.</li>
-            <li><strong>Karma Yoga:</strong> Applying selfless action to my work — helping peers, mentoring juniors, contributing without hyper-focusing on immediate rewards.</li>
-            <li><strong>Placecom Effect:</strong> Navigating the unique pressure of academic placement committees: managing student interests, corporate outreach, and operations under deadlines.</li>
-          </ul>
+      <!-- ============================================================
+           MODE 1: FLOATING BLOCKS CAROUSEL (Default View)
+           ============================================================ -->
+      <div class="explore-carousel-stage" id="journeyCarouselStage">
+        
+        <!-- Stage Top Bar / Module Tracker -->
+        <div class="stage-tracker-bar">
+          <div class="tracker-counter">
+            <span class="tc-current" id="journeyCurrentNum">01</span>
+            <span class="tc-total">/ 06</span>
+          </div>
+          <div class="tracker-info">
+            <span class="tracker-eyebrow" id="journeyEyebrow">IDENTITY</span>
+          </div>
         </div>
-      </section>
 
-      <!-- 3 · What I Achieved -->
-      <section id="what-i-achieved" class="module-section">
-        <span class="section-num">03</span>
-        <p class="module-eyebrow">ACHIEVEMENTS</p>
-        <h2>What I achieved?</h2>
-        <div class="module-content">
-          <p>Milestones from my academic and professional journey:</p>
-          <ul class="bullet-list">
-            <li><strong>Gold Medals:</strong> Top academic rankings in specific course modules and competitions.</li>
-            <li><strong>Certificates of Excellence:</strong> Outstanding performance in technical bootcamps, analytical case studies, and business strategy challenges.</li>
-            <li><strong>Hackathon Wins:</strong> Built functional prototypes in constrained timespans, solving real problems with clean UX.</li>
-          </ul>
-        </div>
-        <div class="tag-row">
-          <span class="tag">Gold Medal</span>
-          <span class="tag">Excellence</span>
-          <span class="tag">Hackathons</span>
-        </div>
-      </section>
+        <!-- Floating Blocks Deck Showcase -->
+        <div class="floating-blocks-wrapper">
+          
+          <!-- Left Arrow (<) -->
+          <button class="carousel-arrow nav-prev" id="journeyPrevBtn" aria-label="Previous Chapter">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
 
-      <!-- 4 · Spices of Life -->
-      <section id="spices-of-life" class="module-section">
-        <span class="section-num">04</span>
-        <p class="module-eyebrow">PERSONAL</p>
-        <h2>Spices of my life</h2>
-        <div class="module-content">
-          <p>Beyond screens and compilers, these bring flavor to my days:</p>
-          <ul class="bullet-list">
-            <li><strong>Photography &amp; Design:</strong> Capturing modern architectural geometry and minimalist visual layouts.</li>
-            <li><strong>Exploration &amp; Travel:</strong> Discovering new cities, industrial history, and local coffee shops.</li>
-            <li><strong>Reading:</strong> Deep dives into technology history, biographies of builders, and behavioral psychology.</li>
-          </ul>
-        </div>
-      </section>
+          <!-- Floating Square Blocks Container (Centered, Max 3 Visible) -->
+          <div class="blocks-container" id="journeyBlocksContainer">
 
-      <!-- 5 · Fun Philosophy -->
-      <section id="fun-philosophy" class="module-section">
-        <span class="section-num">05</span>
-        <p class="module-eyebrow">PHILOSOPHY · HUMOUR</p>
-        <h2>Fun Philosophy</h2>
-        <div class="module-content">
-          <p>Humor is essential in navigating complex engineering tasks. My lighthearted rules:</p>
-          <ul class="bullet-list">
-            <li><strong>The 2 AM Rule:</strong> If it doesn't work by 2 AM, sleep will magically fix it by 9 AM.</li>
-            <li><strong>Occam's Butterknife:</strong> The simplest solution is usually the best — but sometimes you butter toast with whatever tool you have.</li>
-            <li><strong>Infinite Loops:</strong> Coffee is the input. Code is the side-effect.</li>
-          </ul>
-        </div>
-      </section>
+            <!-- Block 01: Who am I? -->
+            <div class="floating-block-card active" data-index="0" data-id="who-am-i">
+              <span class="fb-num">01</span>
+              <div class="fb-icon-box"><i class="fa-solid fa-user-astronaut"></i></div>
+              <h3 class="fb-title">WHO AM I?</h3>
+            </div>
 
-      <!-- 6 · अब्बा नहीं मानेंगे -->
-      <section id="abba-nahin-maanenge" class="module-section">
-        <span class="section-num">06</span>
-        <p class="module-eyebrow">INDIAN ENGINEER DILEMMA</p>
-        <h2>अब्बा नहीं मानेंगे</h2>
-        <div class="module-content">
-          <p>Every Indian engineer's classic dilemma: balancing personal creative passions with traditional expectations. This section is dedicated to my journey of breaking conventions, choosing the path of building software, and proving that unconventional paths lead to fantastic outcomes.</p>
-          <div class="highlight-quote">Building real things that showcase tangible value is the only argument that works.</div>
+            <!-- Block 02: What I did? -->
+            <div class="floating-block-card" data-index="1" data-id="what-i-did">
+              <span class="fb-num">02</span>
+              <div class="fb-icon-box"><i class="fa-solid fa-compass-drafting"></i></div>
+              <h3 class="fb-title">WHAT I DID?</h3>
+            </div>
+
+            <!-- Block 03: What I achieved? -->
+            <div class="floating-block-card" data-index="2" data-id="what-i-achieved">
+              <span class="fb-num">03</span>
+              <div class="fb-icon-box"><i class="fa-solid fa-award"></i></div>
+              <h3 class="fb-title">WHAT I ACHIEVED?</h3>
+            </div>
+
+            <!-- Block 04: Spices of my life -->
+            <div class="floating-block-card" data-index="3" data-id="spices-of-life">
+              <span class="fb-num">04</span>
+              <div class="fb-icon-box"><i class="fa-solid fa-mug-hot"></i></div>
+              <h3 class="fb-title">SPICES OF MY LIFE</h3>
+            </div>
+
+            <!-- Block 05: Fun Philosophy -->
+            <div class="floating-block-card" data-index="4" data-id="fun-philosophy">
+              <span class="fb-num">05</span>
+              <div class="fb-icon-box"><i class="fa-solid fa-face-laugh-beam"></i></div>
+              <h3 class="fb-title">FUN PHILOSOPHY</h3>
+            </div>
+
+            <!-- Block 06: अब्बा नहीं मानेंगे -->
+            <div class="floating-block-card" data-index="5" data-id="abba-nahin-maanenge">
+              <span class="fb-num">06</span>
+              <div class="fb-icon-box"><i class="fa-solid fa-bolt-lightning"></i></div>
+              <h3 class="fb-title">अब्बा नहीं मानेंगे</h3>
+            </div>
+
+          </div>
+
+          <!-- Right Arrow (>) -->
+          <button class="carousel-arrow nav-next" id="journeyNextBtn" aria-label="Next Chapter">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+
         </div>
-      </section>
+
+        <!-- Active Module Quick Detail Panel -->
+        <div class="active-module-panel" id="journeyActivePanel">
+          <div class="amp-content" id="journeyAmpContent">
+            <!-- Dynamically populated via JS based on active floating card -->
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- ============================================================
+           MODE 2: SCROLL DOWN LIST (Shown when "See All Modules" is active)
+           ============================================================ -->
+      <div class="explore-scroll-container" id="journeyScrollContainer" style="display: none;">
+
+        <!-- 1 · Who Am I -->
+        <section id="who-am-i" class="module-section">
+          <span class="section-num">01</span>
+          <p class="module-eyebrow">IDENTITY</p>
+          <h2>Who am I?</h2>
+          <div class="module-content">
+            <p><strong>About Me:</strong> A developer, designer, and student of systems who loves bridging technical depth with strategic thinking and product intuition.</p>
+            <p><strong>What Drives Me:</strong> Deep curiosity about how complex systems work — whether distributed software, economic markets, or corporate environments. I want to build tools that solve genuine inefficiencies.</p>
+            <div class="highlight-quote">"Learn continuously, build deliberately, and leave things better than you found them."</div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Developer</span>
+            <span class="tag">Economist</span>
+            <span class="tag">Designer</span>
+          </div>
+        </section>
+
+        <!-- 2 · What I Did -->
+        <section id="what-i-did" class="module-section">
+          <span class="section-num">02</span>
+          <p class="module-eyebrow">EXPERIENCE</p>
+          <h2>What I did?</h2>
+          <div class="module-content">
+            <p><strong>Education:</strong> Pursuing a rigorous academic path combining software engineering, data sciences, and business analytics.</p>
+            <ul class="bullet-list">
+              <li><strong>Mistakes &amp; Learnings:</strong> Every failed deployment and missed projection is a stepping stone. True growth comes from reviewing, debugging, and documenting your mistakes.</li>
+              <li><strong>Karma Yoga:</strong> Applying selfless action to my work — helping peers, mentoring juniors, contributing without hyper-focusing on immediate rewards.</li>
+              <li><strong>Placecom Effect:</strong> Navigating the unique pressure of academic placement committees: managing student interests, corporate outreach, and operations under deadlines.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 3 · What I Achieved -->
+        <section id="what-i-achieved" class="module-section">
+          <span class="section-num">03</span>
+          <p class="module-eyebrow">ACHIEVEMENTS</p>
+          <h2>What I achieved?</h2>
+          <div class="module-content">
+            <p>Milestones from my academic and professional journey:</p>
+            <ul class="bullet-list">
+              <li><strong>Gold Medals:</strong> Top academic rankings in specific course modules and competitions.</li>
+              <li><strong>Certificates of Excellence:</strong> Outstanding performance in technical bootcamps, analytical case studies, and business strategy challenges.</li>
+              <li><strong>Hackathon Wins:</strong> Built functional prototypes in constrained timespans, solving real problems with clean UX.</li>
+            </ul>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Gold Medal</span>
+            <span class="tag">Excellence</span>
+            <span class="tag">Hackathons</span>
+          </div>
+        </section>
+
+        <!-- 4 · Spices of Life -->
+        <section id="spices-of-life" class="module-section">
+          <span class="section-num">04</span>
+          <p class="module-eyebrow">PERSONAL</p>
+          <h2>Spices of my life</h2>
+          <div class="module-content">
+            <p>Beyond screens and compilers, these bring flavor to my days:</p>
+            <ul class="bullet-list">
+              <li><strong>Photography &amp; Design:</strong> Capturing modern architectural geometry and minimalist visual layouts.</li>
+              <li><strong>Exploration &amp; Travel:</strong> Discovering new cities, industrial history, and local coffee shops.</li>
+              <li><strong>Reading:</strong> Deep dives into technology history, biographies of builders, and behavioral psychology.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 5 · Fun Philosophy -->
+        <section id="fun-philosophy" class="module-section">
+          <span class="section-num">05</span>
+          <p class="module-eyebrow">PHILOSOPHY · HUMOUR</p>
+          <h2>Fun Philosophy</h2>
+          <div class="module-content">
+            <p>Humor is essential in navigating complex engineering tasks. My lighthearted rules:</p>
+            <ul class="bullet-list">
+              <li><strong>The 2 AM Rule:</strong> If it doesn't work by 2 AM, sleep will magically fix it by 9 AM.</li>
+              <li><strong>Occam's Butterknife:</strong> The simplest solution is usually the best — but sometimes you butter toast with whatever tool you have.</li>
+              <li><strong>Infinite Loops:</strong> Coffee is the input. Code is the side-effect.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 6 · अब्बा नहीं मानेंगे -->
+        <section id="abba-nahin-maanenge" class="module-section">
+          <span class="section-num">06</span>
+          <p class="module-eyebrow">INDIAN ENGINEER DILEMMA</p>
+          <h2>अब्बा नहीं मानेंगे</h2>
+          <div class="module-content">
+            <p>Every Indian engineer's classic dilemma: balancing personal creative passions with traditional expectations. This section is dedicated to my journey of breaking conventions, choosing the path of building software, and proving that unconventional paths lead to fantastic outcomes.</p>
+            <div class="highlight-quote">Building real things that showcase tangible value is the only argument that works.</div>
+          </div>
+        </section>
+
+      </div>
+
     </main>
 
     <!-- Sidebar TOC -->
     <aside class="sidebar-nav">
       <p class="sidebar-label">JOURNEY MAP</p>
       <ul class="sidebar-list">
-        <li class="sidebar-item active"><a href="#who-am-i">01 · Who am I?</a></li>
-        <li class="sidebar-item"><a href="#what-i-did">02 · What I did?</a></li>
-        <li class="sidebar-item"><a href="#what-i-achieved">03 · What I achieved?</a></li>
-        <li class="sidebar-item"><a href="#spices-of-life">04 · Spices of my life</a></li>
-        <li class="sidebar-item"><a href="#fun-philosophy">05 · Fun Philosophy</a></li>
-        <li class="sidebar-item"><a href="#abba-nahin-maanenge">06 · अब्बा नहीं मानेंगे</a></li>
+        <li class="sidebar-item active" data-index="0"><a href="#who-am-i">01 · Who am I?</a></li>
+        <li class="sidebar-item" data-index="1"><a href="#what-i-did">02 · What I did?</a></li>
+        <li class="sidebar-item" data-index="2"><a href="#what-i-achieved">03 · What I achieved?</a></li>
+        <li class="sidebar-item" data-index="3"><a href="#spices-of-life">04 · Spices of my life</a></li>
+        <li class="sidebar-item" data-index="4"><a href="#fun-philosophy">05 · Fun Philosophy</a></li>
+        <li class="sidebar-item" data-index="5"><a href="#abba-nahin-maanenge">06 · अब्बा नहीं मानेंगे</a></li>
       </ul>
     </aside>
 

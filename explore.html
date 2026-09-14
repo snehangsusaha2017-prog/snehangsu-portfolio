@@ -10,7 +10,10 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="subpage">
+<body class="subpage explore-page">
+
+  <!-- Dynamic Shifting Ambient Background Overlay -->
+  <div class="dynamic-bg-overlay" id="dynamicBgOverlay"></div>
 
   <!-- Nav -->
   <nav class="site-nav">
@@ -47,216 +50,407 @@
   <!-- Two-column layout -->
   <div class="subpage-wrapper">
 
-    <!-- Content -->
-    <main>
-      <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>&nbsp; BACK TO HOME</a>
+    <!-- Main Content Area -->
+    <main class="explore-main">
 
-      <!-- 1 · Internships -->
-      <section id="internship" class="module-section">
-        <span class="section-num">01</span>
-        <div class="module-header-row">
-          <p class="module-eyebrow">PROFESSIONAL EXPERIENCE</p>
-          <span class="status-pill live"><span class="pulse-dot"></span> Live</span>
-        </div>
-        <h2>Internships</h2>
-        <div class="module-content">
-          <ul class="bullet-list">
-            <li>
-              <div>
-                <strong>Bajaj Finserv</strong><br>
-                Retail credit systems, digital lending frameworks, quantitative underwriting optimizations, and process improvement analysis.
-              </div>
-            </li>
-            <li>
-              <div>
-                <strong>Reserve Bank of India (RBI)</strong><br>
-                Policy research on banking system parameters, economic indicators, and monetary transmission models. Deep exposure to central banking frameworks.
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="tag-row">
-          <span class="tag">FinTech</span>
-          <span class="tag">Credit</span>
-          <span class="tag">Central Banking</span>
-          <span class="tag">Policy Research</span>
-        </div>
-      </section>
+      <!-- Top Action Bar -->
+      <div class="explore-action-bar">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left-long"></i>&nbsp; BACK TO HOME</a>
+        
+        <!-- See All Modules Toggle Button -->
+        <button class="view-toggle-btn" id="exploreViewToggleBtn">
+          <i class="fa-solid fa-list-ul"></i>
+          <span id="viewToggleText">SEE ALL MODULES</span>
+        </button>
+      </div>
 
-      <!-- 2 · Credit Risk Modelling (WIP) -->
-      <section id="credit-risk-modelling" class="module-section is-wip">
-        <span class="section-num">02</span>
-        <div class="module-header-row">
-          <p class="module-eyebrow">DEPLOYED MODEL</p>
-          <span class="status-pill wip"><i class="fa-solid fa-hourglass-half"></i> Work In Progress</span>
-        </div>
-        <h2>Credit Risk Modelling</h2>
-        <div class="module-content">
-          <p>End-to-end Machine Learning pipeline evaluating probability of default (PD) for loan applicants.</p>
-          <ul class="bullet-list">
-            <li><strong>Methodology:</strong> Logistic Regression, XGBoost, and WoE (Weight of Evidence) binning for feature engineering.</li>
-            <li><strong>Deployment:</strong> Served via a Python REST API (FastAPI) with a Streamlit front-end for real-time credit scoring.</li>
-          </ul>
-          <div class="highlight-quote">Reduced test assessment time by 40% while preserving strict regulatory compliance standards.</div>
-          <div class="wip-notice"><i class="fa-solid fa-code-branch"></i> Deployment pipeline and interactive demo documentation currently in progress.</div>
-        </div>
-        <div class="tag-row">
-          <span class="tag">Python</span>
-          <span class="tag">XGBoost</span>
-          <span class="tag">FastAPI</span>
-          <span class="tag">Streamlit</span>
-          <span class="tag">ML</span>
-        </div>
-      </section>
-
-      <!-- 3 · Blockchain Simulation -->
-      <section id="blockchain-simulation" class="module-section">
-        <span class="section-num">03</span>
-        <div class="module-header-row">
-          <p class="module-eyebrow">DISTRIBUTED SYSTEMS</p>
-          <span class="status-pill live"><span class="pulse-dot"></span> Live</span>
-        </div>
-        <h2>Block Chain Simulation</h2>
-        <div class="module-content">
-          <p>Functional local blockchain network demonstrating ledger immutability, mining mechanisms, and smart contract execution.</p>
-          <ul class="bullet-list">
-            <li><strong>SHA-256 block hashing</strong> and Proof-of-Work (PoW) consensus algorithm.</li>
-            <li><strong>Mock peer network synchronization</strong> with visual transaction logs.</li>
-            <li>Built in pure <strong>Node.js / Python</strong> to emphasize structural mechanics over framework abstractions.</li>
-          </ul>
-
-          <!-- Featured CTA Card -->
-          <div class="project-cta-card">
-            <div class="cta-info">
-              <span class="cta-eyebrow">LIVE INTERACTIVE APPLICATION</span>
-              <h3 class="cta-title">ChainEd | Blockchain Business Simulations</h3>
-              <p class="cta-desc">Explore visual peer-to-peer mining, real-time block validation, cryptographic hashing, and distributed consensus mechanisms.</p>
-            </div>
-            <a href="https://snehangsusaha2017-prog.github.io/blockchain-portal/" target="_blank" rel="noopener noreferrer" class="btn-live-launch">
-              <span>Launch Simulation Portal</span>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
+      <!-- ============================================================
+           MODE 1: FLOATING BLOCKS CAROUSEL (Default View)
+           ============================================================ -->
+      <div class="explore-carousel-stage" id="exploreCarouselStage">
+        
+        <!-- Stage Top Bar / Module Tracker -->
+        <div class="stage-tracker-bar">
+          <div class="tracker-counter">
+            <span class="tc-current" id="carouselCurrentNum">01</span>
+            <span class="tc-total">/ 06</span>
+          </div>
+          <div class="tracker-info">
+            <span class="tracker-eyebrow" id="carouselEyebrow">PROFESSIONAL EXPERIENCE</span>
+            <span class="tracker-status live" id="carouselStatusBadge"><span class="pulse-dot"></span> LIVE</span>
           </div>
         </div>
-        <div class="tag-row">
-          <span class="tag">Node.js</span>
-          <span class="tag">Python</span>
-          <span class="tag">Blockchain</span>
-          <span class="tag">SHA-256</span>
-          <span class="tag">PoW</span>
-        </div>
-      </section>
 
-      <!-- 4 · Retail Analytics Dashboard -->
-      <section id="retail-analytics-dashboard" class="module-section">
-        <span class="section-num">04</span>
-        <div class="module-header-row">
-          <p class="module-eyebrow">BUSINESS INTELLIGENCE</p>
-          <span class="status-pill live"><span class="pulse-dot"></span> Live</span>
-        </div>
-        <h2>Retail Analytics Dashboard</h2>
-        <div class="module-content">
-          <p>Interactive BI dashboard visualizing customer buying behavior, supply chain health, and sales forecasting.</p>
-          <ul class="bullet-list">
-            <li><strong>Stack:</strong> SQL, Python (Pandas, Plotly), PowerBI/Tableau.</li>
-            <li><strong>Market Basket Analysis</strong> to surface cross-selling opportunities.</li>
-            <li>Isolated inventory bottlenecks and improved inventory turnover projection models.</li>
-          </ul>
-        </div>
-        <div class="tag-row">
-          <span class="tag">SQL</span>
-          <span class="tag">Python</span>
-          <span class="tag">Tableau</span>
-          <span class="tag">Pandas</span>
-          <span class="tag">PowerBI</span>
-        </div>
-      </section>
+        <!-- Floating Blocks Deck Showcase -->
+        <div class="floating-blocks-wrapper">
+          
+          <!-- Left Arrow (<) -->
+          <button class="carousel-arrow nav-prev" id="carouselPrevBtn" aria-label="Previous Module">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
 
-      <!-- 5 · Learn With Me -->
-      <section id="learn-with-me" class="module-section">
-        <span class="section-num">05</span>
-        <div class="module-header-row">
-          <p class="module-eyebrow">KNOWLEDGE SHARING</p>
-          <span class="status-pill live"><span class="pulse-dot"></span> Live</span>
-        </div>
-        <h2>Learn with me</h2>
-        <div class="module-content">
-          <p>Tutorials, documentation, and conceptual notes from my study topics:</p>
-          <ul class="bullet-list">
-            <li><strong>N8N Automations:</strong> No-code and low-code workflows connecting APIs, syncing databases, and automating redundant engineering tasks.</li>
-            <li><strong>Learn FinTech — Adyen:</strong> Deep dive into payment processing architecture, card networks, and how Adyen processes transaction logic globally.</li>
-            <li><strong>A Lending App Journey:</strong> Blueprints, database schemas, and architectural outlines for building a micro-lending app from scratch.</li>
-          </ul>
-        </div>
-        <div class="tag-row">
-          <span class="tag">N8N</span>
-          <span class="tag">Adyen</span>
-          <span class="tag">FinTech</span>
-          <span class="tag">Lending</span>
-          <span class="tag">Automation</span>
-        </div>
-      </section>
+          <!-- Floating Square Blocks Container (Centered, Max 3 Visible) -->
+          <div class="blocks-container" id="blocksContainer">
 
-      <!-- 6 · RAWE (WIP) -->
-      <section id="rawe" class="module-section is-wip">
-        <span class="section-num">06</span>
-        <div class="module-header-row">
-          <p class="module-eyebrow">FIELD EXPERIENCE</p>
-          <span class="status-pill wip"><i class="fa-solid fa-hourglass-half"></i> Work In Progress</span>
-        </div>
-        <h2>RAWE — Learning by doing</h2>
-        <div class="module-content">
-          <p><strong>Rural Agricultural Work Experience</strong> — Hands-on program working alongside rural communities. Taught me to apply scientific models under real-world resource constraints, evaluate local economy flows, and manage operations in unstructured environments.</p>
-          <div class="highlight-quote">The field taught what no classroom could — imperfection is the default state of the real world.</div>
-          <div class="wip-notice"><i class="fa-solid fa-pen-ruler"></i> Field observations, community case notes, and project deliverables currently being compiled.</div>
-        </div>
-        <div class="tag-row">
-          <span class="tag">Field Work</span>
-          <span class="tag">Rural Economics</span>
-          <span class="tag">Operations</span>
-        </div>
-      </section>
+            <!-- Block 01: Internships (WIP) -->
+            <div class="floating-block-card is-wip active" data-index="0" data-theme="blue" data-id="internship">
+              <span class="fb-num">01</span>
+              <div class="fb-icon-box"><i class="fa-solid fa-briefcase"></i></div>
+              <h3 class="fb-title">INTERNSHIPS</h3>
+              <span class="fb-status wip"><i class="fa-solid fa-hourglass-half"></i> WIP</span>
+            </div>
 
-      <!-- 7 · PG Thesis (WIP) -->
-      <section id="pg-thesis" class="module-section is-wip">
-        <span class="section-num">07</span>
-        <div class="module-header-row">
-          <p class="module-eyebrow">RESEARCH</p>
-          <span class="status-pill wip"><i class="fa-solid fa-hourglass-half"></i> Work In Progress</span>
+            <!-- Block 02: Credit Risk Model -->
+            <div class="floating-block-card is-wip" data-index="1" data-theme="indigo" data-id="credit-risk-modelling">
+              <span class="fb-num">02</span>
+              <div class="fb-icon-box"><i class="fa-solid fa-chart-line"></i></div>
+              <h3 class="fb-title">CREDIT RISK MODEL</h3>
+              <span class="fb-status wip"><i class="fa-solid fa-hourglass-half"></i> WIP</span>
+            </div>
+
+            <!-- Block 03: Blockchain -->
+            <div class="floating-block-card" data-index="2" data-theme="teal" data-id="blockchain-simulation">
+              <span class="fb-num">03</span>
+              <div class="fb-icon-box"><i class="fa-solid fa-cube"></i></div>
+              <h3 class="fb-title">BLOCKCHAIN SIMULATION</h3>
+              <span class="fb-status live"><span class="pulse-dot"></span> Live</span>
+            </div>
+
+            <!-- Block 04: Retail Analytics -->
+            <div class="floating-block-card" data-index="3" data-theme="emerald" data-id="retail-analytics-dashboard">
+              <span class="fb-num">04</span>
+              <div class="fb-icon-box"><i class="fa-solid fa-store"></i></div>
+              <h3 class="fb-title">RETAIL ANALYTICS</h3>
+              <span class="fb-status live"><span class="pulse-dot"></span> Live</span>
+            </div>
+
+            <!-- Block 05: Learn with Me (WIP) -->
+            <div class="floating-block-card is-wip" data-index="4" data-theme="purple" data-id="learn-with-me">
+              <span class="fb-num">05</span>
+              <div class="fb-icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
+              <h3 class="fb-title">LEARN WITH ME</h3>
+              <span class="fb-status wip"><i class="fa-solid fa-hourglass-half"></i> WIP</span>
+            </div>
+
+            <!-- Block 06: RAWE -->
+            <div class="floating-block-card is-wip" data-index="5" data-theme="copper" data-id="rawe">
+              <span class="fb-num">06</span>
+              <div class="fb-icon-box"><i class="fa-solid fa-tractor"></i></div>
+              <h3 class="fb-title">RAWE</h3>
+              <span class="fb-status wip"><i class="fa-solid fa-hourglass-half"></i> WIP</span>
+            </div>
+
+          </div>
+
+          <!-- Right Arrow (>) -->
+          <button class="carousel-arrow nav-next" id="carouselNextBtn" aria-label="Next Module">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+
         </div>
-        <h2>PG Thesis — Insect Genomics &amp; Beyond</h2>
-        <div class="module-content">
-          <p>Post-Graduate research in genomics, bioinformatics pipeline analysis, and computational biology.</p>
-          <ul class="bullet-list">
-            <li><strong>Focus:</strong> Sequencing genomes, analyzing phylogenetic trees, and using predictive models to study adaptive genetic variants.</li>
-            <li><strong>Stack:</strong> Biopython, R (Bioconductor), BLAST alignments, cloud computing environments.</li>
-          </ul>
-          <div class="wip-notice"><i class="fa-solid fa-dna"></i> Research abstracts, phylogenetic models, and pipeline diagrams in final preparation.</div>
+
+        <!-- Active Module Quick Detail Panel -->
+        <div class="active-module-panel" id="activeModulePanel">
+          <div class="amp-content" id="ampContent">
+            <!-- Dynamically populated via JS based on active floating card -->
+          </div>
         </div>
-        <div class="tag-row">
-          <span class="tag">Bioinformatics</span>
-          <span class="tag">Biopython</span>
-          <span class="tag">R</span>
-          <span class="tag">BLAST</span>
-          <span class="tag">Genomics</span>
-        </div>
-      </section>
+
+      </div>
+
+
+      <!-- ============================================================
+           MODE 2: SCROLL DOWN LIST (Shown when "See All Modules" is active)
+           ============================================================ -->
+      <div class="explore-scroll-container" id="exploreScrollContainer" style="display: none;">
+
+        <!-- 1 · Internships (WIP) -->
+        <section id="internship" class="module-section is-wip">
+          <span class="section-num">01</span>
+          <div class="module-header-row">
+            <p class="module-eyebrow">PROFESSIONAL EXPERIENCE</p>
+            <span class="status-pill wip"><i class="fa-solid fa-hourglass-half"></i> Work In Progress</span>
+          </div>
+          <h2>Internships</h2>
+          <div class="module-content">
+            <ul class="bullet-list">
+              <li>
+                <div>
+                  <strong>Bajaj Finserv</strong><br>
+                  Retail credit systems, digital lending frameworks, quantitative underwriting optimizations, and process improvement analysis.
+                </div>
+              </li>
+              <li>
+                <div>
+                  <strong>Reserve Bank of India (RBI)</strong><br>
+                  Policy research on banking system parameters, economic indicators, and monetary transmission models. Deep exposure to central banking frameworks.
+                </div>
+              </li>
+            </ul>
+            <div class="wip-notice"><i class="fa-solid fa-hourglass-half"></i> Internship case studies and project summaries currently in preparation.</div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">FinTech</span>
+            <span class="tag">Credit</span>
+            <span class="tag">Central Banking</span>
+            <span class="tag">Policy Research</span>
+          </div>
+        </section>
+
+        <!-- 2 · Credit Risk Modelling (WIP) -->
+        <section id="credit-risk-modelling" class="module-section is-wip">
+          <span class="section-num">02</span>
+          <div class="module-header-row">
+            <p class="module-eyebrow">DEPLOYED MODEL</p>
+            <span class="status-pill wip"><i class="fa-solid fa-hourglass-half"></i> Work In Progress</span>
+          </div>
+          <h2>Credit Risk Modelling</h2>
+          <div class="module-content">
+            <p>End-to-end Machine Learning pipeline evaluating probability of default (PD) for loan applicants.</p>
+            <ul class="bullet-list">
+              <li><strong>Methodology:</strong> Logistic Regression, XGBoost, and WoE (Weight of Evidence) binning for feature engineering.</li>
+              <li><strong>Deployment:</strong> Served via a Python REST API (FastAPI) with a Streamlit front-end for real-time credit scoring.</li>
+            </ul>
+            <div class="highlight-quote">Reduced test assessment time by 40% while preserving strict regulatory compliance standards.</div>
+            <div class="wip-notice"><i class="fa-solid fa-code-branch"></i> Deployment pipeline and interactive demo documentation currently in progress.</div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">XGBoost</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Streamlit</span>
+            <span class="tag">ML</span>
+          </div>
+        </section>
+
+        <!-- 3 · Blockchain Simulation -->
+        <section id="blockchain-simulation" class="module-section">
+          <span class="section-num">03</span>
+          <div class="module-header-row">
+            <p class="module-eyebrow">DISTRIBUTED SYSTEMS</p>
+            <span class="status-pill live"><span class="pulse-dot"></span> Live</span>
+          </div>
+          <h2>Block Chain Simulation</h2>
+          <div class="module-content">
+            <p>Functional local blockchain network demonstrating ledger immutability, mining mechanisms, and smart contract execution.</p>
+            <ul class="bullet-list">
+              <li><strong>SHA-256 block hashing</strong> and Proof-of-Work (PoW) consensus algorithm.</li>
+              <li><strong>Mock peer network synchronization</strong> with visual transaction logs.</li>
+              <li>Built in pure <strong>Node.js / Python</strong> to emphasize structural mechanics over framework abstractions.</li>
+            </ul>
+
+            <!-- Featured CTA Card -->
+            <div class="project-cta-card">
+              <div class="cta-info">
+                <span class="cta-eyebrow">LIVE INTERACTIVE APPLICATION</span>
+                <h3 class="cta-title">ChainEd | Blockchain Business Simulations</h3>
+                <p class="cta-desc">Explore visual peer-to-peer mining, real-time block validation, cryptographic hashing, and distributed consensus mechanisms.</p>
+              </div>
+              <a href="https://snehangsusaha2017-prog.github.io/blockchain-portal/" target="_blank" rel="noopener noreferrer" class="btn-live-launch">
+                <span>Launch Simulation Portal</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Node.js</span>
+            <span class="tag">Python</span>
+            <span class="tag">Blockchain</span>
+            <span class="tag">SHA-256</span>
+            <span class="tag">PoW</span>
+          </div>
+        </section>
+
+        <!-- 4 · Retail Analytics Dashboard -->
+        <section id="retail-analytics-dashboard" class="module-section">
+          <span class="section-num">04</span>
+          <div class="module-header-row">
+            <p class="module-eyebrow">BUSINESS INTELLIGENCE &amp; DECISION PLATFORM</p>
+            <span class="status-pill live"><span class="pulse-dot"></span> Live</span>
+          </div>
+          <h2>Apollo RetailIQ AI — Retail Analytics</h2>
+          <div class="module-content">
+            <p>A unified decision intelligence platform compressing time-to-decision from days to seconds across 247+ stores and 10 Indian states.</p>
+            
+            <div class="dummy-dataset-badge">
+              <i class="fa-solid fa-database"></i> Note: Operating on a synthetic dataset modeled on retail pharmacy operational profiles.
+            </div>
+
+            <!-- Two Sub-Modules Container -->
+            <div class="sub-modules-grid">
+              
+              <!-- Sub-Module 1: Learn -->
+              <div class="sub-module-card learn-card">
+                <div class="sm-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+                <div class="sm-info">
+                  <span class="sm-tag">SUB-MODULE 01</span>
+                  <h3 class="sm-title">Learning Journey &amp; Case Study</h3>
+                  <p class="sm-desc">Understand why every metric exists, design philosophy, 8 executive KPIs, and business inferences.</p>
+                </div>
+                <button class="sm-btn learn-btn trigger-learn-modal">
+                  <span>Start Learning Journey</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+
+              <!-- Sub-Module 2: See Dashboard -->
+              <div class="sub-module-card dashboard-card">
+                <div class="sm-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                <div class="sm-info">
+                  <span class="sm-tag">SUB-MODULE 02</span>
+                  <h3 class="sm-title">Live App &amp; Dashboard</h3>
+                  <p class="sm-desc">Explore cross-filtering, 12 decision modules, AI alerts, and real-time scenario simulation.</p>
+                </div>
+                <a href="https://apollo-retailiq.ai.studio/" target="_blank" rel="noopener noreferrer" class="sm-btn dashboard-btn">
+                  <span>See Dashboard App</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="tag-row">
+            <span class="tag">Decision Intelligence</span>
+            <span class="tag">AI Alerts</span>
+            <span class="tag">Scenario Modeling</span>
+            <span class="tag">Material 3</span>
+            <span class="tag">PowerBI Slicing</span>
+          </div>
+        </section>
+
+        <!-- 5 · Learn With Me (WIP) -->
+        <section id="learn-with-me" class="module-section is-wip">
+          <span class="section-num">05</span>
+          <div class="module-header-row">
+            <p class="module-eyebrow">KNOWLEDGE SHARING</p>
+            <span class="status-pill wip"><i class="fa-solid fa-hourglass-half"></i> Work In Progress</span>
+          </div>
+          <h2>Learn with me</h2>
+          <div class="module-content">
+            <p>Tutorials, documentation, and conceptual notes from my study topics:</p>
+            <ul class="bullet-list">
+              <li><strong>N8N Automations:</strong> No-code and low-code workflows connecting APIs, syncing databases, and automating redundant engineering tasks.</li>
+              <li><strong>Learn FinTech — Adyen:</strong> Deep dive into payment processing architecture, card networks, and how Adyen processes transaction logic globally.</li>
+              <li><strong>A Lending App Journey:</strong> Blueprints, database schemas, and architectural outlines for building a micro-lending app from scratch.</li>
+            </ul>
+            <div class="wip-notice"><i class="fa-solid fa-hourglass-half"></i> Interactive tutorials and downloadable guidebooks currently in progress.</div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">N8N</span>
+            <span class="tag">Adyen</span>
+            <span class="tag">FinTech</span>
+            <span class="tag">Lending</span>
+            <span class="tag">Automation</span>
+          </div>
+        </section>
+
+        <!-- 6 · RAWE (WIP) -->
+        <section id="rawe" class="module-section is-wip">
+          <span class="section-num">06</span>
+          <div class="module-header-row">
+            <p class="module-eyebrow">FIELD EXPERIENCE</p>
+            <span class="status-pill wip"><i class="fa-solid fa-hourglass-half"></i> Work In Progress</span>
+          </div>
+          <h2>RAWE — Learning by doing</h2>
+          <div class="module-content">
+            <p><strong>Rural Agricultural Work Experience</strong> — Hands-on program working alongside rural communities. Taught me to apply scientific models under real-world resource constraints, evaluate local economy flows, and manage operations in unstructured environments.</p>
+            <div class="highlight-quote">The field taught what no classroom could — imperfection is the default state of the real world.</div>
+            <div class="wip-notice"><i class="fa-solid fa-pen-ruler"></i> Field observations, community case notes, and project deliverables currently being compiled.</div>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Field Work</span>
+            <span class="tag">Rural Economics</span>
+            <span class="tag">Operations</span>
+          </div>
+        </section>
+
+      </div>
+
     </main>
 
     <!-- Sidebar TOC -->
     <aside class="sidebar-nav">
       <p class="sidebar-label">PROJECT INDEX</p>
       <ul class="sidebar-list">
-        <li class="sidebar-item active"><a href="#internship"><span>01 · Internships</span><span class="sidebar-badge live">Live</span></a></li>
-        <li class="sidebar-item is-wip"><a href="#credit-risk-modelling"><span>02 · Credit Risk Model</span><span class="sidebar-badge wip">WIP</span></a></li>
-        <li class="sidebar-item"><a href="#blockchain-simulation"><span>03 · Blockchain</span><span class="sidebar-badge live">Live</span></a></li>
-        <li class="sidebar-item"><a href="#retail-analytics-dashboard"><span>04 · Retail Analytics</span><span class="sidebar-badge live">Live</span></a></li>
-        <li class="sidebar-item"><a href="#learn-with-me"><span>05 · Learn with Me</span><span class="sidebar-badge live">Live</span></a></li>
-        <li class="sidebar-item is-wip"><a href="#rawe"><span>06 · RAWE</span><span class="sidebar-badge wip">WIP</span></a></li>
-        <li class="sidebar-item is-wip"><a href="#pg-thesis"><span>07 · PG Thesis</span><span class="sidebar-badge wip">WIP</span></a></li>
+        <li class="sidebar-item is-wip active" data-index="0"><a href="#internship"><span>01 · Internships</span><span class="sidebar-badge wip">WIP</span></a></li>
+        <li class="sidebar-item is-wip" data-index="1"><a href="#credit-risk-modelling"><span>02 · Credit Risk Model</span><span class="sidebar-badge wip">WIP</span></a></li>
+        <li class="sidebar-item" data-index="2"><a href="#blockchain-simulation"><span>03 · Blockchain</span><span class="sidebar-badge live">Live</span></a></li>
+        <li class="sidebar-item" data-index="3"><a href="#retail-analytics-dashboard"><span>04 · Retail Analytics</span><span class="sidebar-badge live">Live</span></a></li>
+        <li class="sidebar-item is-wip" data-index="4"><a href="#learn-with-me"><span>05 · Learn with Me</span><span class="sidebar-badge wip">WIP</span></a></li>
+        <li class="sidebar-item is-wip" data-index="5"><a href="#rawe"><span>06 · RAWE</span><span class="sidebar-badge wip">WIP</span></a></li>
       </ul>
     </aside>
 
+  </div>
+
+  <!-- Apollo RetailIQ AI Learning Journey Modal -->
+  <div class="modal" id="retailIQModal">
+    <div class="modal-card modal-card-lg">
+      <button class="modal-close-btn" id="closeLearnModalBtn" aria-label="Close Learning Journey"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="learn-modal-header">
+        <span class="modal-eyebrow">GUIDED LEARNING JOURNEY</span>
+        <h2 class="learn-modal-title">Apollo RetailIQ AI — Case Study</h2>
+        <p class="learn-modal-subtitle">Understanding what was built, design philosophy, and data-driven inferences.</p>
+        
+        <div class="dummy-dataset-badge">
+          <i class="fa-solid fa-database"></i> Note: Operating on a synthetic dataset modeled on Apollo Pharmacy's profile.
+        </div>
+      </div>
+
+      <div class="learn-steps-container">
+        
+        <!-- Chapter 1 -->
+        <div class="learn-step-card">
+          <div class="step-badge">CHAPTER 1</div>
+          <h3 class="step-title">The Challenge &amp; Opportunity</h3>
+          <p class="step-text">Data existed across POS, CRM, ERP, and Excel sheets, but answering simple operational questions took days of manual effort. Apollo RetailIQ AI unifies 247+ stores across 10 states into a single, instant filter-driven view.</p>
+        </div>
+
+        <!-- Chapter 2 -->
+        <div class="learn-step-card">
+          <div class="step-badge">CHAPTER 2</div>
+          <h3 class="step-title">Design Philosophy</h3>
+          <ul class="step-list">
+            <li><strong>Data Before Decoration:</strong> Every chart answers a specific business question.</li>
+            <li><strong>Interconnected Filtering:</strong> Selecting a state (e.g. Maharashtra) recalculates all KPIs instantly.</li>
+            <li><strong>Context at Every Level:</strong> Provides trend, comparison, forecast &amp; AI recommendation for every metric.</li>
+            <li><strong>Google Material 3:</strong> Clean whitespace and consistent spacing grid.</li>
+          </ul>
+        </div>
+
+        <!-- Chapter 3 -->
+        <div class="learn-step-card">
+          <div class="step-badge">CHAPTER 3</div>
+          <h3 class="step-title">8 Headline Business Metrics</h3>
+          <div class="metrics-mini-grid">
+            <div class="mm-item"><strong>₹2,486 Cr</strong><span>Revenue</span></div>
+            <div class="mm-item"><strong>₹826 Cr</strong><span>Gross Profit (33.2%)</span></div>
+            <div class="mm-item"><strong>₹372 Cr</strong><span>EBITDA (15.0%)</span></div>
+            <div class="mm-item"><strong>8.4x</strong><span>Inventory Turns</span></div>
+            <div class="mm-item"><strong>2.84 Cr</strong><span>Total Orders</span></div>
+            <div class="mm-item"><strong>1.12 M</strong><span>Active Customers</span></div>
+          </div>
+        </div>
+
+        <!-- Chapter 4 -->
+        <div class="learn-step-card">
+          <div class="step-badge">CHAPTER 4</div>
+          <h3 class="step-title">Decision Modules &amp; AI Alerts</h3>
+          <p class="step-text">Features 12 decision modules (Sales, Store 360, Customer LTV, Digital, Supply Chain, Scenario Simulator) plus an AI Alert engine monitoring anomalies in real time.</p>
+        </div>
+
+      </div>
+
+      <div class="learn-modal-footer">
+        <a href="https://apollo-retailiq.ai.studio/" target="_blank" rel="noopener noreferrer" class="amp-btn-primary">
+          <span>See Dashboard App ↗</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+
+    </div>
   </div>
 
   <!-- Floating Mobile TOC -->
