@@ -132,10 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
         status: 'wip',
         statusText: 'WORK IN PROGRESS',
         bgGradient: 'radial-gradient(circle at 50% 40%, #0d1e4a 0%, #050b1a 100%)',
-        desc: 'Product Management – Payments (Acquiring) at Bajaj Finance Ltd. Soundbox reconciliation automation (23.8% cost reduction), AI Merchant Dashboard revamp, and UAT for 12 live requirements.',
+        desc: 'Product Management – Payments (Acquiring) at Bajaj Finance Ltd. Soundbox reconciliation automation, AI Merchant Dashboard revamp, and UAT for 12 live requirements.',
         ctaText: 'See SB-RECON Prototype ↗',
         ctaUrl: 'https://snehangsusaha2017-prog.github.io/sb-recon/',
-        isExternal: true
+        isExternal: true,
+        hasInternshipOptions: true
       },
       {
         num: '02',
@@ -289,22 +290,66 @@ document.addEventListener('DOMContentLoaded', () => {
           ? `<div class="dummy-dataset-badge"><i class="fa-solid fa-database"></i> Note: Operating on a synthetic dataset</div>`
           : '';
 
-        ampContent.innerHTML = `
-          <div class="amp-header">
-            <span class="amp-eyebrow">${data.eyebrow}</span>
-            <span class="status-pill ${data.status}">${data.status === 'live' ? '<span class="pulse-dot"></span> Live' : '<i class="fa-solid fa-hourglass-half"></i> Work In Progress'}</span>
-          </div>
-          <h2 class="amp-title">${data.title}</h2>
-          ${noteHtml}
-          <p class="amp-desc">${data.desc}</p>
-          <div class="amp-actions">
-            <a href="${data.ctaUrl}" ${ctaAttr} class="amp-btn-primary">
-              <span>${data.ctaText}</span>
-              <i class="fa-solid ${data.isExternal ? 'fa-arrow-up-right-from-square' : 'fa-arrow-right'}"></i>
-            </a>
-            ${learnBtnHtml}
-          </div>
-        `;
+        // Internship: show 3 sub-module buttons instead of single CTA
+        if (data.hasInternshipOptions) {
+          ampContent.innerHTML = `
+            <div class="amp-header">
+              <span class="amp-eyebrow">${data.eyebrow}</span>
+              <span class="status-pill ${data.status}"><i class="fa-solid fa-hourglass-half"></i> Work In Progress</span>
+            </div>
+            <h2 class="amp-title">${data.title}</h2>
+            <p class="amp-desc">${data.desc}</p>
+            <div class="sub-modules-grid" style="margin-top:1.25rem;gap:0.75rem;">
+              <div class="sub-module-card learn-card" style="padding:1rem;">
+                <div class="sm-icon" style="font-size:1.1rem;"><i class="fa-solid fa-user-tie"></i></div>
+                <div class="sm-info">
+                  <span class="sm-tag">OVERVIEW</span>
+                  <h3 class="sm-title" style="font-size:0.9rem;">About the Internship</h3>
+                </div>
+                <button class="sm-btn learn-btn trigger-internship-about-modal" style="padding:0.5rem 0.9rem;font-size:0.78rem;">
+                  <span>Read</span><i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+              <div class="sub-module-card" style="padding:1rem;">
+                <div class="sm-icon" style="font-size:1.1rem;"><i class="fa-solid fa-file-pdf"></i></div>
+                <div class="sm-info">
+                  <span class="sm-tag">REPORT</span>
+                  <h3 class="sm-title" style="font-size:0.9rem;">See Report <i class="fa-solid fa-lock" style="font-size:0.75rem;opacity:0.6;"></i></h3>
+                </div>
+                <button class="sm-btn trigger-internship-report-modal" style="padding:0.5rem 0.9rem;font-size:0.78rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);">
+                  <span>View</span><i class="fa-solid fa-lock"></i>
+                </button>
+              </div>
+              <div class="sub-module-card dashboard-card" style="padding:1rem;">
+                <div class="sm-icon" style="font-size:1.1rem;"><i class="fa-solid fa-diagram-project"></i></div>
+                <div class="sm-info">
+                  <span class="sm-tag">PROTOTYPE</span>
+                  <h3 class="sm-title" style="font-size:0.9rem;">See Demo Prototype</h3>
+                </div>
+                <a href="https://snehangsusaha2017-prog.github.io/sb-recon/" target="_blank" rel="noopener noreferrer" class="sm-btn dashboard-btn" style="padding:0.5rem 0.9rem;font-size:0.78rem;">
+                  <span>Open ↗</span><i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </div>
+          `;
+        } else {
+          ampContent.innerHTML = `
+            <div class="amp-header">
+              <span class="amp-eyebrow">${data.eyebrow}</span>
+              <span class="status-pill ${data.status}">${data.status === 'live' ? '<span class="pulse-dot"></span> Live' : '<i class="fa-solid fa-hourglass-half"></i> Work In Progress'}</span>
+            </div>
+            <h2 class="amp-title">${data.title}</h2>
+            ${noteHtml}
+            <p class="amp-desc">${data.desc}</p>
+            <div class="amp-actions">
+              <a href="${data.ctaUrl}" ${ctaAttr} class="amp-btn-primary">
+                <span>${data.ctaText}</span>
+                <i class="fa-solid ${data.isExternal ? 'fa-arrow-up-right-from-square' : 'fa-arrow-right'}"></i>
+              </a>
+              ${learnBtnHtml}
+            </div>
+          `;
+        }
       }
     }
 
