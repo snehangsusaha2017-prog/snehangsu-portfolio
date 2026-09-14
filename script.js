@@ -127,16 +127,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const modulesData = [
       {
         num: '01',
-        title: 'Bajaj Finance – Product Management',
-        eyebrow: 'PRODUCT MANAGEMENT · BAJAJ FINANCE',
-        status: 'live',
-        statusText: 'LIVE',
-        bgGradient: 'radial-gradient(circle at 50% 40%, #0d264a 0%, #040f1f 100%)',
-        desc: 'Product Management – Payments (Acquiring), Bajaj Finance. Soundbox recovery & reconciliation automation (SB-RECON), AI-driven merchant dashboard revamp, and UAT controls.',
-        ctaText: 'Open SB-RECON Prototype ↗',
+        title: 'Internship – Bajaj Finance',
+        eyebrow: 'PROFESSIONAL EXPERIENCE',
+        status: 'wip',
+        statusText: 'WORK IN PROGRESS',
+        bgGradient: 'radial-gradient(circle at 50% 40%, #0d1e4a 0%, #050b1a 100%)',
+        desc: 'Product Management – Payments (Acquiring) at Bajaj Finance Ltd. Soundbox reconciliation automation (23.8% cost reduction), AI Merchant Dashboard revamp, and UAT for 12 live requirements.',
+        ctaText: 'See SB-RECON Prototype ↗',
         ctaUrl: 'https://snehangsusaha2017-prog.github.io/sb-recon/',
-        isExternal: true,
-        hasBajajOptions: true
+        isExternal: true
       },
       {
         num: '02',
@@ -283,15 +282,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Update Quick Detail Panel Content
       if (ampContent) {
         const ctaAttr = data.isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
-        let secondaryBtnsHtml = '';
-        if (data.hasLearnOption) {
-          secondaryBtnsHtml = `<button class="amp-btn-secondary trigger-learn-modal"><i class="fa-solid fa-book-open-reader"></i> Learn Study</button>`;
-        } else if (data.hasBajajOptions) {
-          secondaryBtnsHtml = `
-            <button class="amp-btn-secondary trigger-internship-about"><i class="fa-solid fa-circle-info"></i> About Internship</button>
-            <button class="amp-btn-secondary trigger-internship-report"><i class="fa-solid fa-lock"></i> See Internship Report</button>
-          `;
-        }
+        const learnBtnHtml = data.hasLearnOption 
+          ? `<button class="amp-btn-secondary trigger-learn-modal"><i class="fa-solid fa-book-open-reader"></i> Learn Study</button>`
+          : '';
         const noteHtml = data.hasLearnOption
           ? `<div class="dummy-dataset-badge"><i class="fa-solid fa-database"></i> Note: Operating on a synthetic dataset</div>`
           : '';
@@ -304,12 +297,12 @@ document.addEventListener('DOMContentLoaded', () => {
           <h2 class="amp-title">${data.title}</h2>
           ${noteHtml}
           <p class="amp-desc">${data.desc}</p>
-          <div class="amp-actions" style="display:flex; flex-wrap:wrap; gap:0.75rem;">
+          <div class="amp-actions">
             <a href="${data.ctaUrl}" ${ctaAttr} class="amp-btn-primary">
               <span>${data.ctaText}</span>
               <i class="fa-solid ${data.isExternal ? 'fa-arrow-up-right-from-square' : 'fa-arrow-right'}"></i>
             </a>
-            ${secondaryBtnsHtml}
+            ${learnBtnHtml}
           </div>
         `;
       }
@@ -577,63 +570,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Init
     updateJourneyModule(0);
-  // ── BAJAJ FINANCE INTERNSHIP MODALS & PASSWORD AUTHENTICATION ─────────
-  const bajajAboutModal      = document.getElementById('bajajAboutModal');
-  const closeBajajAboutBtn   = document.getElementById('closeBajajAboutBtn');
-  
-  const bajajAuthModal       = document.getElementById('bajajReportAuthModal');
-  const closeBajajAuthBtn    = document.getElementById('closeBajajAuthBtn');
-  const bajajPassInput       = document.getElementById('bajajPassInput');
-  const bajajPassError       = document.getElementById('bajajPassError');
-  const submitBajajPassBtn   = document.getElementById('submitBajajPassBtn');
-  
-  const bajajReportViewModal = document.getElementById('bajajReportViewModal');
-  const closeBajajReportViewBtn = document.getElementById('closeBajajReportViewBtn');
-
-  // Trigger About Modal
-  document.addEventListener('click', e => {
-    if (e.target.closest('.trigger-internship-about')) {
-      e.preventDefault();
-      bajajAboutModal?.classList.add('open');
-    }
-  });
-
-  closeBajajAboutBtn?.addEventListener('click', () => bajajAboutModal?.classList.remove('open'));
-  bajajAboutModal?.addEventListener('click', e => { if (e.target === bajajAboutModal) bajajAboutModal.classList.remove('open'); });
-
-  // Trigger Protected Report Modal (opens password prompt first)
-  document.addEventListener('click', e => {
-    if (e.target.closest('.trigger-internship-report')) {
-      e.preventDefault();
-      bajajAboutModal?.classList.remove('open');
-      if (bajajPassInput) bajajPassInput.value = '';
-      if (bajajPassError) bajajPassError.style.display = 'none';
-      bajajAuthModal?.classList.add('open');
-    }
-  });
-
-  closeBajajAuthBtn?.addEventListener('click', () => bajajAuthModal?.classList.remove('open'));
-  bajajAuthModal?.addEventListener('click', e => { if (e.target === bajajAuthModal) bajajAuthModal.classList.remove('open'); });
-
-  // Handle Password Authentication Check
-  function verifyBajajPassword() {
-    const entered = bajajPassInput?.value || '';
-    if (entered.trim() === 'saha470bajaj@glim') {
-      if (bajajPassError) bajajPassError.style.display = 'none';
-      bajajAuthModal?.classList.remove('open');
-      bajajReportViewModal?.classList.add('open');
-    } else {
-      if (bajajPassError) bajajPassError.style.display = 'block';
-      bajajPassInput?.focus();
-    }
   }
 
-  submitBajajPassBtn?.addEventListener('click', verifyBajajPassword);
-  bajajPassInput?.addEventListener('keydown', e => {
-    if (e.key === 'Enter') verifyBajajPassword();
+  // ── APOLLO RETAILIQ AI LEARNING MODAL ────────────────────────
+  const learnModal = document.getElementById('retailIQModal');
+  const closeLearnModalBtn = document.getElementById('closeLearnModalBtn');
+
+  document.addEventListener('click', e => {
+    if (e.target.closest('.trigger-learn-modal')) {
+      e.preventDefault();
+      learnModal?.classList.add('open');
+    }
   });
 
-  closeBajajReportViewBtn?.addEventListener('click', () => bajajReportViewModal?.classList.remove('open'));
-  bajajReportViewModal?.addEventListener('click', e => { if (e.target === bajajReportViewModal) bajajReportViewModal.classList.remove('open'); });
+  closeLearnModalBtn?.addEventListener('click', () => learnModal?.classList.remove('open'));
+  learnModal?.addEventListener('click', e => { if (e.target === learnModal) learnModal.classList.remove('open'); });
+
+  // ── INTERNSHIP ABOUT MODAL ───────────────────────────────────
+  const internshipAboutModal = document.getElementById('internshipAboutModal');
+  const closeInternshipAboutBtn = document.getElementById('closeInternshipAboutBtn');
+
+  document.addEventListener('click', e => {
+    if (e.target.closest('.trigger-internship-about-modal')) {
+      e.preventDefault();
+      internshipAboutModal?.classList.add('open');
+    }
+  });
+  closeInternshipAboutBtn?.addEventListener('click', () => internshipAboutModal?.classList.remove('open'));
+  internshipAboutModal?.addEventListener('click', e => { if (e.target === internshipAboutModal) internshipAboutModal.classList.remove('open'); });
+
+  // ── INTERNSHIP REPORT PASSWORD MODAL ────────────────────────
+  const internshipReportModal = document.getElementById('internshipReportModal');
+  const closeInternshipReportBtn = document.getElementById('closeInternshipReportBtn');
+  const reportPasswordInput = document.getElementById('reportPasswordInput');
+  const reportPasswordSubmit = document.getElementById('reportPasswordSubmit');
+  const reportPasswordError = document.getElementById('reportPasswordError');
+  const reportPasswordWrap = document.getElementById('reportPasswordWrap');
+  const reportViewerWrap = document.getElementById('reportViewerWrap');
+
+  const REPORT_PASSWORD = 'saha470@bajajglim';
+
+  document.addEventListener('click', e => {
+    if (e.target.closest('.trigger-internship-report-modal')) {
+      e.preventDefault();
+      // Reset state each open
+      if (reportPasswordWrap) reportPasswordWrap.style.display = 'block';
+      if (reportViewerWrap) reportViewerWrap.style.display = 'none';
+      if (reportPasswordInput) reportPasswordInput.value = '';
+      if (reportPasswordError) reportPasswordError.style.display = 'none';
+      internshipReportModal?.classList.add('open');
+    }
+  });
+
+  reportPasswordSubmit?.addEventListener('click', () => {
+    if (reportPasswordInput?.value === REPORT_PASSWORD) {
+      reportPasswordWrap.style.display = 'none';
+      reportViewerWrap.style.display = 'block';
+    } else {
+      if (reportPasswordError) reportPasswordError.style.display = 'block';
+      if (reportPasswordInput) { reportPasswordInput.value = ''; reportPasswordInput.focus(); }
+    }
+  });
+
+  reportPasswordInput?.addEventListener('keydown', e => {
+    if (e.key === 'Enter') reportPasswordSubmit?.click();
+  });
+
+  closeInternshipReportBtn?.addEventListener('click', () => internshipReportModal?.classList.remove('open'));
+  internshipReportModal?.addEventListener('click', e => { if (e.target === internshipReportModal) internshipReportModal.classList.remove('open'); });
 
 });

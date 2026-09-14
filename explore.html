@@ -92,12 +92,12 @@
           <!-- Floating Square Blocks Container (Centered, Max 3 Visible) -->
           <div class="blocks-container" id="blocksContainer">
 
-            <!-- Block 01: Bajaj Finance Internship -->
-            <div class="floating-block-card active" data-index="0" data-theme="blue" data-id="internship">
+            <!-- Block 01: Internships (WIP) -->
+            <div class="floating-block-card is-wip active" data-index="0" data-theme="blue" data-id="internship">
               <span class="fb-num">01</span>
               <div class="fb-icon-box"><i class="fa-solid fa-briefcase"></i></div>
-              <h3 class="fb-title">BAJAJ FINANCE</h3>
-              <span class="fb-status live"><span class="pulse-dot"></span> Live</span>
+              <h3 class="fb-title">INTERNSHIPS</h3>
+              <span class="fb-status wip"><i class="fa-solid fa-hourglass-half"></i> WIP</span>
             </div>
 
             <!-- Block 02: Credit Risk Model -->
@@ -164,70 +164,67 @@
            ============================================================ -->
       <div class="explore-scroll-container" id="exploreScrollContainer" style="display: none;">
 
-        <!-- 1 · Internship: Bajaj Finance -->
-        <section id="internship" class="module-section">
+        <!-- 1 · Internship – Bajaj Finance -->
+        <section id="internship" class="module-section is-wip">
           <span class="section-num">01</span>
           <div class="module-header-row">
-            <p class="module-eyebrow">PRODUCT MANAGEMENT · BAJAJ FINANCE</p>
-            <span class="status-pill live"><span class="pulse-dot"></span> Live</span>
+            <p class="module-eyebrow">PROFESSIONAL EXPERIENCE</p>
+            <span class="status-pill wip"><i class="fa-solid fa-hourglass-half"></i> Work In Progress</span>
           </div>
-          <h2>Bajaj Finance — Product Management</h2>
-          <div class="module-content">
-            <p>Product Management – Payments (Acquiring), Bajaj Finance (Apr 2026 – Jun 2026). Focused on process improvement, reconciliation automation (SB-RECON), AI-driven merchant dashboard revamp, and UAT controls.</p>
+          <h2>Internship – Bajaj Finance</h2>
 
-            <!-- Three Sub-Modules Container -->
-            <div class="sub-modules-grid three-col">
-              
-              <!-- Sub-Module 1: About Overview -->
-              <div class="sub-module-card about-card">
-                <div class="sm-icon"><i class="fa-solid fa-circle-info"></i></div>
-                <div class="sm-info">
-                  <span class="sm-tag">SUB-MODULE 01</span>
-                  <h3 class="sm-title">About Internship</h3>
-                  <p class="sm-desc">Overview of role, key deliverables, process improvements &amp; core skills.</p>
-                </div>
-                <button class="sm-btn learn-btn trigger-internship-about">
-                  <span>View Overview</span>
-                  <i class="fa-solid fa-arrow-right"></i>
-                </button>
+          <!-- Sub-Modules Grid -->
+          <div class="sub-modules-grid internship-sm-grid" style="margin-top:1.5rem;">
+
+            <!-- About -->
+            <div class="sub-module-card learn-card">
+              <div class="sm-icon"><i class="fa-solid fa-user-tie"></i></div>
+              <div class="sm-info">
+                <span class="sm-tag">OVERVIEW</span>
+                <h3 class="sm-title">About the Internship</h3>
+                <p class="sm-desc">Product Management – Payments (Acquiring) at Bajaj Finance Ltd, Apr–Jun 2026. Soundbox reconciliation automation, AI merchant dashboard, UAT & process controls.</p>
               </div>
+              <button class="sm-btn learn-btn trigger-internship-about-modal">
+                <span>Read Overview</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
 
-              <!-- Sub-Module 2: Prototype CTA -->
-              <div class="sub-module-card prototype-card">
-                <div class="sm-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                <div class="sm-info">
-                  <span class="sm-tag">SUB-MODULE 02</span>
-                  <h3 class="sm-title">SB-RECON Prototype</h3>
-                  <p class="sm-desc">Soundbox Recovery &amp; Reconciliation interactive system application portal.</p>
-                </div>
-                <a href="https://snehangsusaha2017-prog.github.io/sb-recon/" target="_blank" rel="noopener noreferrer" class="sm-btn dashboard-btn">
-                  <span>Open SB-RECON ↗</span>
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
+            <!-- See Report -->
+            <div class="sub-module-card">
+              <div class="sm-icon"><i class="fa-solid fa-file-pdf"></i></div>
+              <div class="sm-info">
+                <span class="sm-tag">REPORT</span>
+                <h3 class="sm-title">See Full Report</h3>
+                <p class="sm-desc">Confidential internship report (S_SAHA.pdf). Password protected — no download permitted.</p>
               </div>
+              <button class="sm-btn trigger-internship-report-modal" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);">
+                <span>View Report</span>
+                <i class="fa-solid fa-lock"></i>
+              </button>
+            </div>
 
-              <!-- Sub-Module 3: Internship Report (Protected) -->
-              <div class="sub-module-card report-card">
-                <div class="sm-icon"><i class="fa-solid fa-lock"></i></div>
-                <div class="sm-info">
-                  <span class="sm-tag">SUB-MODULE 03 · PROTECTED</span>
-                  <h3 class="sm-title">Internship Report</h3>
-                  <p class="sm-desc">Full documentation &amp; quantitative impact analysis (Requires password).</p>
-                </div>
-                <button class="sm-btn learn-btn trigger-internship-report">
-                  <span>Unlock Report <i class="fa-solid fa-key"></i></span>
-                </button>
+            <!-- See Demo Prototype -->
+            <div class="sub-module-card dashboard-card">
+              <div class="sm-icon"><i class="fa-solid fa-diagram-project"></i></div>
+              <div class="sm-info">
+                <span class="sm-tag">PROTOTYPE</span>
+                <h3 class="sm-title">SB-RECON Demo Prototype</h3>
+                <p class="sm-desc">Soundbox Recovery & Reconciliation automation prototype — explore the interactive flow.</p>
               </div>
-
+              <a href="https://snehangsusaha2017-prog.github.io/sb-recon/" target="_blank" rel="noopener noreferrer" class="sm-btn dashboard-btn">
+                <span>See Demo ↗</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
             </div>
 
           </div>
-          <div class="tag-row">
+
+          <div class="tag-row" style="margin-top:1.5rem;">
             <span class="tag">Product Management</span>
-            <span class="tag">Bajaj Finance</span>
-            <span class="tag">SB-RECON</span>
+            <span class="tag">Payments Acquiring</span>
             <span class="tag">Reconciliation</span>
-            <span class="tag">PRD &amp; FSS</span>
+            <span class="tag">AI Dashboard</span>
             <span class="tag">UAT</span>
           </div>
         </section>
@@ -408,7 +405,7 @@
     <aside class="sidebar-nav">
       <p class="sidebar-label">PROJECT INDEX</p>
       <ul class="sidebar-list">
-        <li class="sidebar-item active" data-index="0"><a href="#internship"><span>01 · Bajaj Finance</span><span class="sidebar-badge live">Live</span></a></li>
+        <li class="sidebar-item is-wip active" data-index="0"><a href="#internship"><span>01 · Internships</span><span class="sidebar-badge wip">WIP</span></a></li>
         <li class="sidebar-item is-wip" data-index="1"><a href="#credit-risk-modelling"><span>02 · Credit Risk Model</span><span class="sidebar-badge wip">WIP</span></a></li>
         <li class="sidebar-item" data-index="2"><a href="#blockchain-simulation"><span>03 · Blockchain</span><span class="sidebar-badge live">Live</span></a></li>
         <li class="sidebar-item" data-index="3"><a href="#retail-analytics-dashboard"><span>04 · Retail Analytics</span><span class="sidebar-badge live">Live</span></a></li>
@@ -417,177 +414,6 @@
       </ul>
     </aside>
 
-  </div>
-
-  <!-- Bajaj Internship About Overview Modal -->
-  <div class="modal" id="bajajAboutModal">
-    <div class="modal-card modal-card-lg">
-      <button class="modal-close-btn" id="closeBajajAboutBtn" aria-label="Close About Modal"><i class="fa-solid fa-xmark"></i></button>
-      
-      <div class="learn-modal-header">
-        <span class="modal-eyebrow">PRODUCT MANAGEMENT · BAJAJ FINANCE</span>
-        <h2 class="learn-modal-title">Internship Overview</h2>
-        <p class="learn-modal-subtitle">Snehangsu Saha | Product Management – Payments (Acquiring), Bajaj Finance | Apr 2026 – Jun 2026</p>
-      </div>
-
-      <div class="learn-steps-container">
-        
-        <div class="learn-step-card">
-          <div class="step-badge">SUMMARY</div>
-          <h3 class="step-title">Role &amp; Overview</h3>
-          <p class="step-text">Worked in Product Management within Payments – Acquiring, focusing on process improvement, business requirements, reconciliation automation, merchant analytics and technology-enabled operational efficiency. Translated business problems into structured requirements, workflows and implementation-oriented solutions.</p>
-        </div>
-
-        <div class="learn-step-card">
-          <div class="step-badge">KEY DELIVERABLES</div>
-          <h3 class="step-title">3 Major Product Pillars</h3>
-          <ul class="step-list">
-            <li><strong>1. Soundbox Recovery &amp; Reconciliation Automation:</strong> Mapped end-to-end workflows, formulated automated business rules, defined PRD/FSS, and reduced projected reconciliation cost by <strong>23.8% per transaction</strong> with a <strong>75% reduction in analyst effort</strong> (4 hours to 1 hour daily).</li>
-            <li><strong>2. AI-Driven Merchant Dashboard Revamp:</strong> Competitive benchmarking, post-hoc analytical feature prioritization, and AI-driven product roadmap design.</li>
-            <li><strong>3. UAT, Controls &amp; Process Improvement:</strong> UAT testing for 12 live requirements and identification of critical control gaps.</li>
-          </ul>
-        </div>
-
-        <div class="learn-step-card">
-          <div class="step-badge">SKILLS DEVELOPED</div>
-          <h3 class="step-title">Core Competencies</h3>
-          <div class="metrics-mini-grid">
-            <div class="mm-item"><strong>Product Mgmt</strong><span>PRD, Roadmap, UAT</span></div>
-            <div class="mm-item"><strong>Consulting</strong><span>Process Mapping, Gap Analysis</span></div>
-            <div class="mm-item"><strong>Analytics</strong><span>Post-hoc Analysis, Decision Support</span></div>
-            <div class="mm-item"><strong>Process Excellence</strong><span>Workflow Design &amp; Controls</span></div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="learn-modal-footer" style="display: flex; gap: 1rem; justify-content: flex-end; flex-wrap: wrap;">
-        <a href="https://snehangsusaha2017-prog.github.io/sb-recon/" target="_blank" rel="noopener noreferrer" class="amp-btn-primary">
-          <span>Open SB-RECON Prototype ↗</span>
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
-        <button class="amp-btn-secondary trigger-internship-report">
-          <i class="fa-solid fa-lock"></i> Unlock Full Report
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Bajaj Internship Password Prompt Modal -->
-  <div class="modal" id="bajajReportAuthModal">
-    <div class="modal-card">
-      <button class="modal-close-btn" id="closeBajajAuthBtn" aria-label="Close Password Modal"><i class="fa-solid fa-xmark"></i></button>
-      <span class="modal-eyebrow"><i class="fa-solid fa-shield-halved"></i> PROTECTED DOCUMENT</span>
-      <h3 class="modal-title">Enter Authorization Password</h3>
-      <p class="modal-desc">Please enter the passcode to access Snehangsu's full Bajaj Finance Internship Report.</p>
-      
-      <div class="auth-input-group" style="margin: 1.25rem 0;">
-        <input type="password" id="bajajPassInput" class="auth-input-field" placeholder="Enter password" autocomplete="off">
-        <div id="bajajPassError" class="auth-error-msg" style="display: none; color: #ff5252; font-size: 0.85rem; margin-top: 0.5rem; font-weight: 500;">
-          <i class="fa-solid fa-triangle-exclamation"></i> Incorrect password. Access denied.
-        </div>
-      </div>
-
-      <button id="submitBajajPassBtn" class="amp-btn-primary" style="width: 100%; justify-content: center;">
-        <span>Unlock Report</span>
-        <i class="fa-solid fa-key"></i>
-      </button>
-    </div>
-  </div>
-
-  <!-- Bajaj Internship Full Protected Report Modal -->
-  <div class="modal" id="bajajReportViewModal">
-    <div class="modal-card modal-card-lg">
-      <button class="modal-close-btn" id="closeBajajReportViewBtn" aria-label="Close Report Modal"><i class="fa-solid fa-xmark"></i></button>
-      
-      <div class="learn-modal-header">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-          <span class="modal-eyebrow" style="color: #4CAF50;"><i class="fa-solid fa-circle-check"></i> AUTHENTICATED ACCESS</span>
-          <span class="status-pill live"><i class="fa-solid fa-file-pdf"></i> OFFICIAL REPORT</span>
-        </div>
-        <h2 class="learn-modal-title">INTERNSHIP EXPERIENCE REPORT</h2>
-        <p class="learn-modal-subtitle"><strong>Snehangsu Saha</strong> | Product Management – Payments (Acquiring), Bajaj Finance | Apr 2026 – Jun 2026</p>
-      </div>
-
-      <div class="learn-steps-container">
-        
-        <!-- Section: Overview -->
-        <div class="learn-step-card">
-          <h3 class="step-title" style="color: var(--color-accent-gold);">Internship Overview</h3>
-          <p class="step-text">Worked in Product Management within Payments – Acquiring, focusing on process improvement, business requirements, reconciliation automation, merchant analytics and technology-enabled operational efficiency. Translated business problems into structured requirements, workflows and implementation-oriented solutions.</p>
-        </div>
-
-        <!-- Section 1 -->
-        <div class="learn-step-card">
-          <div class="step-badge">PROJECT 1</div>
-          <h3 class="step-title">Soundbox Recovery &amp; Reconciliation Automation</h3>
-          <ul class="step-list">
-            <li><strong>Mapped end-to-end Soundbox recovery and reconciliation workflow</strong>, identifying key process dependencies and operational gaps to establish a structured foundation for automation.</li>
-            <li><strong>Formulated business rules and reconciliation logic</strong> across multiple data sources, enabling systematic validation, exception identification and improved process accuracy.</li>
-            <li><strong>Defined a PRD-led FSS solution</strong> with structured exception handling and workflow controls, improving process resilience, traceability and operational governance.</li>
-            <li><strong>Quantified the automation opportunity</strong>, reducing projected reconciliation cost by <strong>23.8% per transaction</strong> and enabling a <strong>75% reduction in analyst effort</strong>, from 4 hours to 1 hour daily.</li>
-          </ul>
-        </div>
-
-        <!-- Section 2 -->
-        <div class="learn-step-card">
-          <div class="step-badge">PROJECT 2</div>
-          <h3 class="step-title">AI-Driven Merchant Dashboard Revamp</h3>
-          <ul class="step-list">
-            <li><strong>Conducted competitive benchmarking and gap analysis</strong> of merchant-facing dashboards to identify opportunities across reporting, analytics and decision support.</li>
-            <li><strong>Leveraged data-backed insights from post-hoc analysis</strong> to prioritize dashboard features and support resource allocation and phased execution.</li>
-            <li><strong>Designed an AI-driven Merchant Dashboard revamp</strong>, translating merchant needs and analytical findings into a structured product roadmap.</li>
-          </ul>
-        </div>
-
-        <!-- Section 3 -->
-        <div class="learn-step-card">
-          <div class="step-badge">PROJECT 3</div>
-          <h3 class="step-title">UAT, Controls &amp; Process Improvement</h3>
-          <ul class="step-list">
-            <li><strong>Conducted UAT testing for 12 live requirements</strong> from the previous quarter, validating functionality against defined requirements.</li>
-            <li><strong>Identified control gaps and process improvement opportunities</strong>, supporting enhanced process effectiveness and stronger control governance.</li>
-          </ul>
-        </div>
-
-        <!-- Key Learning & Skills Developed -->
-        <div class="learn-step-card">
-          <div class="step-badge">SUMMARY &amp; SKILLS</div>
-          <h3 class="step-title">Key Learning &amp; Skills Developed</h3>
-          <div class="metrics-mini-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-            <div class="mm-item">
-              <strong>Product Management</strong>
-              <span>Requirements, PRD, roadmap prioritization, UAT</span>
-            </div>
-            <div class="mm-item">
-              <strong>Business Consulting</strong>
-              <span>Process mapping, gap analysis, stakeholder problem solving</span>
-            </div>
-            <div class="mm-item">
-              <strong>Analytics</strong>
-              <span>Post-hoc analysis, data-backed insights, decision support</span>
-            </div>
-            <div class="mm-item">
-              <strong>Process Excellence</strong>
-              <span>Workflow design, controls, reconciliation, efficiency improvement</span>
-            </div>
-          </div>
-          <p class="step-text" style="margin-top: 1rem; font-style: italic; color: var(--color-text-muted);">
-            "Overall impact: Gained hands-on exposure to Product Management and Business Consulting by converting business requirements into structured workflows, using data to support decisions, strengthening process controls and identifying measurable efficiency opportunities."
-          </p>
-        </div>
-
-      </div>
-
-      <div class="learn-modal-footer">
-        <a href="https://snehangsusaha2017-prog.github.io/sb-recon/" target="_blank" rel="noopener noreferrer" class="amp-btn-primary">
-          <span>Launch SB-RECON Prototype ↗</span>
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
-      </div>
-
-    </div>
   </div>
 
   <!-- Apollo RetailIQ AI Learning Journey Modal -->
@@ -663,6 +489,100 @@
   <button class="floating-toc-btn" aria-label="Toggle index">
     <i class="fa-solid fa-list-ul"></i>
   </button>
+
+  <!-- ── INTERNSHIP ABOUT MODAL ──────────────────────────── -->
+  <div class="modal" id="internshipAboutModal">
+    <div class="modal-card modal-card-lg">
+      <button class="modal-close-btn" id="closeInternshipAboutBtn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="learn-modal-header">
+        <span class="modal-eyebrow">PRODUCT MANAGEMENT · PAYMENTS ACQUIRING</span>
+        <h2 class="learn-modal-title">Internship – Bajaj Finance</h2>
+        <p class="learn-modal-subtitle">Snehangsu Saha &nbsp;|&nbsp; Apr 2026 – Jun 2026</p>
+      </div>
+      <div class="learn-steps-container">
+
+        <div class="learn-step-card">
+          <div class="step-badge">OVERVIEW</div>
+          <h3 class="step-title">Internship Overview</h3>
+          <p class="step-text">Worked in Product Management within Payments – Acquiring, focusing on process improvement, business requirements, reconciliation automation, merchant analytics and technology-enabled operational efficiency. Translated business problems into structured requirements, workflows and implementation-oriented solutions.</p>
+        </div>
+
+        <div class="learn-step-card">
+          <div class="step-badge">PROJECT 1</div>
+          <h3 class="step-title">Soundbox Recovery & Reconciliation Automation</h3>
+          <ul class="step-list">
+            <li>Mapped the end-to-end Soundbox recovery and reconciliation workflow, identifying key process dependencies and operational gaps.</li>
+            <li>Formulated business rules and reconciliation logic across multiple data sources, enabling systematic validation and exception identification.</li>
+            <li>Defined a PRD-led FSS solution with structured exception handling and workflow controls, improving process resilience and operational governance.</li>
+            <li><strong>Impact:</strong> Reduced projected reconciliation cost by <strong>23.8% per transaction</strong>; reduced analyst effort from 4 hours to 1 hour daily (<strong>75% reduction</strong>).</li>
+          </ul>
+        </div>
+
+        <div class="learn-step-card">
+          <div class="step-badge">PROJECT 2</div>
+          <h3 class="step-title">AI-Driven Merchant Dashboard Revamp</h3>
+          <ul class="step-list">
+            <li>Conducted competitive benchmarking and gap analysis of merchant-facing dashboards across reporting, analytics and decision support.</li>
+            <li>Leveraged data-backed insights from post-hoc analysis to prioritize dashboard features and support phased execution.</li>
+            <li>Designed an AI-driven Merchant Dashboard revamp, translating merchant needs into a structured product roadmap.</li>
+          </ul>
+        </div>
+
+        <div class="learn-step-card">
+          <div class="step-badge">PROJECT 3</div>
+          <h3 class="step-title">UAT, Controls & Process Improvement</h3>
+          <ul class="step-list">
+            <li>Conducted UAT testing for 12 live requirements from the previous quarter, validating functionality against defined requirements.</li>
+            <li>Identified control gaps and process improvement opportunities, supporting enhanced process effectiveness and stronger control governance.</li>
+          </ul>
+        </div>
+
+        <div class="learn-step-card">
+          <div class="step-badge">KEY SKILLS</div>
+          <h3 class="step-title">Skills Developed</h3>
+          <div class="metrics-mini-grid">
+            <div class="mm-item"><strong>Product Management</strong><span>PRD, roadmap, UAT</span></div>
+            <div class="mm-item"><strong>Business Consulting</strong><span>Process mapping, gap analysis</span></div>
+            <div class="mm-item"><strong>Analytics</strong><span>Post-hoc analysis, data insights</span></div>
+            <div class="mm-item"><strong>Process Excellence</strong><span>Workflow design, reconciliation</span></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="learn-modal-footer">
+        <a href="https://snehangsusaha2017-prog.github.io/sb-recon/" target="_blank" rel="noopener noreferrer" class="amp-btn-primary">
+          <span>See SB-RECON Prototype ↗</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── INTERNSHIP REPORT PASSWORD MODAL ───────────────── -->
+  <div class="modal" id="internshipReportModal">
+    <div class="modal-card" style="max-width:420px;">
+      <button class="modal-close-btn" id="closeInternshipReportBtn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <div style="text-align:center;padding:0.5rem 0 1rem;">
+        <i class="fa-solid fa-lock" style="font-size:2rem;color:#c8a96e;margin-bottom:0.75rem;display:block;"></i>
+        <p class="modal-eyebrow">CONFIDENTIAL REPORT</p>
+        <h3 class="modal-title" style="margin-bottom:0.4rem;">S_SAHA.pdf</h3>
+        <p style="font-size:0.82rem;opacity:0.55;margin-bottom:1.25rem;">Password required to view. Downloading is disabled.</p>
+      </div>
+      <div id="reportPasswordWrap">
+        <input type="password" id="reportPasswordInput" placeholder="Enter access password" style="width:100%;padding:0.65rem 1rem;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:#fff;font-size:0.9rem;outline:none;margin-bottom:0.75rem;">
+        <p id="reportPasswordError" style="color:#e05555;font-size:0.8rem;display:none;margin-bottom:0.5rem;">Incorrect password. Please try again.</p>
+        <button id="reportPasswordSubmit" style="width:100%;padding:0.65rem;border-radius:8px;background:#c8a96e;color:#0a0a0a;font-weight:700;font-size:0.88rem;border:none;cursor:pointer;letter-spacing:0.08em;">UNLOCK REPORT</button>
+      </div>
+      <div id="reportViewerWrap" style="display:none;">
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:2rem;text-align:center;">
+          <i class="fa-solid fa-file-pdf" style="font-size:2.5rem;color:#c8a96e;margin-bottom:0.75rem;display:block;"></i>
+          <p style="font-size:0.9rem;opacity:0.75;margin-bottom:0.5rem;">S_SAHA.pdf — Internship Report</p>
+          <p style="font-size:0.78rem;opacity:0.45;">Viewing only. Downloading is not permitted.</p>
+        </div>
+        <p style="font-size:0.75rem;text-align:center;opacity:0.35;margin-top:0.75rem;">The full report document will be embedded here once finalized.</p>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
