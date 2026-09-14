@@ -127,15 +127,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const modulesData = [
       {
         num: '01',
-        title: 'Internships',
-        eyebrow: 'PROFESSIONAL EXPERIENCE',
-        status: 'wip',
-        statusText: 'WORK IN PROGRESS',
-        bgGradient: 'radial-gradient(circle at 50% 40%, #0d1e4a 0%, #050b1a 100%)',
-        desc: 'Retail credit systems, digital lending frameworks, quantitative underwriting optimizations at Bajaj Finserv, and policy research on banking indicators at Reserve Bank of India (RBI).',
-        ctaText: 'WIP Documentation',
-        ctaUrl: '#internship',
-        isExternal: false
+        title: 'Bajaj Finance – Product Management',
+        eyebrow: 'PRODUCT MANAGEMENT · BAJAJ FINANCE',
+        status: 'live',
+        statusText: 'LIVE',
+        bgGradient: 'radial-gradient(circle at 50% 40%, #0d264a 0%, #040f1f 100%)',
+        desc: 'Product Management – Payments (Acquiring), Bajaj Finance. Soundbox recovery & reconciliation automation (SB-RECON), AI-driven merchant dashboard revamp, and UAT controls.',
+        ctaText: 'Open SB-RECON Prototype ↗',
+        ctaUrl: 'https://snehangsusaha2017-prog.github.io/sb-recon/',
+        isExternal: true,
+        hasBajajOptions: true
       },
       {
         num: '02',
@@ -282,9 +283,15 @@ document.addEventListener('DOMContentLoaded', () => {
       // Update Quick Detail Panel Content
       if (ampContent) {
         const ctaAttr = data.isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
-        const learnBtnHtml = data.hasLearnOption 
-          ? `<button class="amp-btn-secondary trigger-learn-modal"><i class="fa-solid fa-book-open-reader"></i> Learn Study</button>`
-          : '';
+        let secondaryBtnsHtml = '';
+        if (data.hasLearnOption) {
+          secondaryBtnsHtml = `<button class="amp-btn-secondary trigger-learn-modal"><i class="fa-solid fa-book-open-reader"></i> Learn Study</button>`;
+        } else if (data.hasBajajOptions) {
+          secondaryBtnsHtml = `
+            <button class="amp-btn-secondary trigger-internship-about"><i class="fa-solid fa-circle-info"></i> About Internship</button>
+            <button class="amp-btn-secondary trigger-internship-report"><i class="fa-solid fa-lock"></i> See Internship Report</button>
+          `;
+        }
         const noteHtml = data.hasLearnOption
           ? `<div class="dummy-dataset-badge"><i class="fa-solid fa-database"></i> Note: Operating on a synthetic dataset</div>`
           : '';
@@ -297,12 +304,12 @@ document.addEventListener('DOMContentLoaded', () => {
           <h2 class="amp-title">${data.title}</h2>
           ${noteHtml}
           <p class="amp-desc">${data.desc}</p>
-          <div class="amp-actions">
+          <div class="amp-actions" style="display:flex; flex-wrap:wrap; gap:0.75rem;">
             <a href="${data.ctaUrl}" ${ctaAttr} class="amp-btn-primary">
               <span>${data.ctaText}</span>
               <i class="fa-solid ${data.isExternal ? 'fa-arrow-up-right-from-square' : 'fa-arrow-right'}"></i>
             </a>
-            ${learnBtnHtml}
+            ${secondaryBtnsHtml}
           </div>
         `;
       }
@@ -570,20 +577,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Init
     updateJourneyModule(0);
-  }
+  // ── BAJAJ FINANCE INTERNSHIP MODALS & PASSWORD AUTHENTICATION ─────────
+  const bajajAboutModal      = document.getElementById('bajajAboutModal');
+  const closeBajajAboutBtn   = document.getElementById('closeBajajAboutBtn');
+  
+  const bajajAuthModal       = document.getElementById('bajajReportAuthModal');
+  const closeBajajAuthBtn    = document.getElementById('closeBajajAuthBtn');
+  const bajajPassInput       = document.getElementById('bajajPassInput');
+  const bajajPassError       = document.getElementById('bajajPassError');
+  const submitBajajPassBtn   = document.getElementById('submitBajajPassBtn');
+  
+  const bajajReportViewModal = document.getElementById('bajajReportViewModal');
+  const closeBajajReportViewBtn = document.getElementById('closeBajajReportViewBtn');
 
-  // ── APOLLO RETAILIQ AI LEARNING MODAL ────────────────────────
-  const learnModal = document.getElementById('retailIQModal');
-  const closeLearnModalBtn = document.getElementById('closeLearnModalBtn');
-
+  // Trigger About Modal
   document.addEventListener('click', e => {
-    if (e.target.closest('.trigger-learn-modal')) {
+    if (e.target.closest('.trigger-internship-about')) {
       e.preventDefault();
-      learnModal?.classList.add('open');
+      bajajAboutModal?.classList.add('open');
     }
   });
 
-  closeLearnModalBtn?.addEventListener('click', () => learnModal?.classList.remove('open'));
-  learnModal?.addEventListener('click', e => { if (e.target === learnModal) learnModal.classList.remove('open'); });
+  closeBajajAboutBtn?.addEventListener('click', () => bajajAboutModal?.classList.remove('open'));
+  bajajAboutModal?.addEventListener('click', e => { if (e.target === bajajAboutModal) bajajAboutModal.classList.remove('open'); });
+
+  // Trigger Protected Report Modal (opens password prompt first)
+  document.addEventListener('click', e => {
+    if (e.target.closest('.trigger-internship-report')) {
+      e.preventDefault();
+      bajajAboutModal?.classList.remove('open');
+      if (bajajPassInput) bajajPassInput.value = '';
+      if (bajajPassError) bajajPassError.style.display = 'none';
+      bajajAuthModal?.classList.add('open');
+    }
+  });
+
+  closeBajajAuthBtn?.addEventListener('click', () => bajajAuthModal?.classList.remove('open'));
+  bajajAuthModal?.addEventListener('click', e => { if (e.target === bajajAuthModal) bajajAuthModal.classList.remove('open'); });
+
+  // Handle Password Authentication Check
+  function verifyBajajPassword() {
+    const entered = bajajPassInput?.value || '';
+    if (entered.trim() === 'saha470bajaj@glim') {
+      if (bajajPassError) bajajPassError.style.display = 'none';
+      bajajAuthModal?.classList.remove('open');
+      bajajReportViewModal?.classList.add('open');
+    } else {
+      if (bajajPassError) bajajPassError.style.display = 'block';
+      bajajPassInput?.focus();
+    }
+  }
+
+  submitBajajPassBtn?.addEventListener('click', verifyBajajPassword);
+  bajajPassInput?.addEventListener('keydown', e => {
+    if (e.key === 'Enter') verifyBajajPassword();
+  });
+
+  closeBajajReportViewBtn?.addEventListener('click', () => bajajReportViewModal?.classList.remove('open'));
+  bajajReportViewModal?.addEventListener('click', e => { if (e.target === bajajReportViewModal) bajajReportViewModal.classList.remove('open'); });
 
 });
